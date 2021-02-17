@@ -1,24 +1,34 @@
 import 'package:flutter/material.dart';
 
 class HomeTopInfo extends StatelessWidget {
-
-  final textStyle =  TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Colors.white);
+  final textStyle = TextStyle(
+      fontSize: 32.0, fontWeight: FontWeight.bold, color: Colors.black);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 20),
+      margin: EdgeInsets.only(bottom: 20.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Column(
             children: <Widget>[
-              Text("What would", style: textStyle),
-              Text("you like to eat?", style: textStyle,),
+              Text(
+                "What would",
+                style: textStyle,
+              ),
+              Text(
+                "you like to eat?",
+                style: textStyle,
+              ),
             ],
           ),
-          Icon(Icons.notifications_none,size: 30,color: Theme.of(context).primaryColor,),
+          Icon(
+            Icons.notifications_none,
+            size: 30.0,
+            color: Theme.of(context).primaryColor,
+          ),
         ],
       ),
     );
