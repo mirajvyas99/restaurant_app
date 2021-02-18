@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mohit_digitalrestaurant/src/widget/order_card.dart';
+import '../widgets/order_card.dart';
 
 class OrderPage extends StatefulWidget {
   @override
