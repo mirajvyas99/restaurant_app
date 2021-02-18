@@ -56,7 +56,7 @@ class _MainScreenState extends State<MainScreen> {
             title: Text("Home"),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.favorite_border),
+            icon: Icon(Icons.explore),
             title: Text("Explore"),
           ),
           BottomNavigationBarItem(
@@ -64,7 +64,7 @@ class _MainScreenState extends State<MainScreen> {
             title: Text("Orders"),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person_outline),
+            icon: Icon(Icons.person),
             title: Text("Profile"),
           ),
         ],
