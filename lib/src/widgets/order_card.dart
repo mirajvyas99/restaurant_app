@@ -9,6 +9,7 @@ class _OrderCardState extends State<OrderCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: 5.0,
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
         child: Row(

@@ -4,7 +4,7 @@ import '../widgets/small_button.dart';
 
 class FavoritePage extends StatefulWidget {
   @override
-  _FavouritePageState createState() => _FavoritePageState();
+  _FavoritePageState createState() => _FavoritePageState();
 }
 
 class _FavoritePageState extends State<FavoritePage> {
