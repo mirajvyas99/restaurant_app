@@ -21,7 +21,7 @@ class _OrderCardState extends State<OrderCard> {
                 borderRadius: BorderRadius.circular(10.0),
               ),
               width: 45.0,
-              height: 85.0,
+              height: 77.0,
               child: Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: 10.0,
