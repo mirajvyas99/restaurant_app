@@ -1,4 +1,4 @@
-import 'package:digital_restaurant/src/pages/signin_page.dart';
+import 'signin_page.dart';
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatefulWidget {
