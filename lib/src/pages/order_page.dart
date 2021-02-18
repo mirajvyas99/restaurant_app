@@ -137,7 +137,7 @@ class _OrderPageState extends State<OrderPage> {
               );
             },
             child: Container(
-              height: 50.0,
+              height: 44.0,
               decoration: BoxDecoration(
                 color: Colors.blue,
                 borderRadius: BorderRadius.circular(35.0),
