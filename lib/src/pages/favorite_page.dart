@@ -22,7 +22,8 @@ class _FavoritePageState extends State<FavoritePage> {
       ),
       body: Container(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 0.0),
+          padding:
+              const EdgeInsets.symmetric(horizontal: 16.0), //vertical: 60.0
           child: ListView(
             children: <Widget>[
               Column(
