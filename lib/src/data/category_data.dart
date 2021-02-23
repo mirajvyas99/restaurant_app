@@ -2,28 +2,35 @@ import '../models/category_model.dart';
 
 final categories = [
   Category(
-    numberOfItems: 43,
-    imagePath: "assets/images/burger.png",
-    categoryName: "Burger"
-  ),
+      numberOfItems: 10,
+      imagePath: "assets/images/soup.png",
+      categoryName: "Soups"),
   Category(
-      numberOfItems: 23,
+      numberOfItems: 8,
+      imagePath: "assets/images/starter.png",
+      categoryName: "Starters"),
+  Category(
+      numberOfItems: 10,
+      imagePath: "assets/images/indianbread.png",
+      categoryName: "Indian Bread"),
+  Category(
+      numberOfItems: 10,
       imagePath: "assets/images/pizza.png",
-      categoryName: "Pizza"
-  ),
+      categoryName: "Pizza"),
   Category(
-      numberOfItems: 23,
+      numberOfItems: 5,
+      imagePath: "assets/images/burger.png",
+      categoryName: "Burger"),
+  Category(
+      numberOfItems: 10,
       imagePath: "assets/images/coffee-cup.png",
-      categoryName: "Coffee Cup"
-  ),
+      categoryName: "Coffee Cup"),
   Category(
-      numberOfItems: 23,
-      imagePath: "assets/images/beer.png",
-      categoryName: "Beer"
-  ),
+      numberOfItems: 5,
+      imagePath: "assets/images/softdrink.png",
+      categoryName: "Soft Drinks"),
   Category(
-      numberOfItems: 23,
-      imagePath: "assets/images/cheeseburger.png",
-      categoryName: "Cheese Burger"
-  ),
+      numberOfItems: 10,
+      imagePath: "assets/images/desert.png",
+      categoryName: "Deserts"),
 ];

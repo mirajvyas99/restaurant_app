@@ -6,9 +6,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Food Delivery App",
-      theme: ThemeData(
-        primaryColor: Colors.lightBlueAccent
-      ),
+      theme: ThemeData(primaryColor: Colors.lightBlueAccent),
       home: MainScreen(),
     );
   }

@@ -12,6 +12,7 @@ class FoodCard extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(right: 15),
       child: Card(
+        color: Colors.white,
         elevation: 5.0,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -30,10 +31,15 @@ class FoodCard extends StatelessWidget {
                 children: <Widget>[
                   Text(
                     categoryName,
-                    style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16.0,
+                        color: Colors.black),
                   ),
-                  Text("$numberOfItems Kinds"),
+                  Text(
+                    "$numberOfItems Items",
+                    style: TextStyle(color: Colors.black),
+                  ),
                 ],
               )
             ],

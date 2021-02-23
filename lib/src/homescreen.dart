@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       body: ListView(
         padding: EdgeInsets.only(top: 50.0, left: 20.0, right: 20.0),
         children: <Widget>[

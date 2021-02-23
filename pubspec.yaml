@@ -41,6 +41,11 @@ flutter:
     - assets/images/supper_1.jpeg
     - assets/images/turkey.png
     - assets/images/noimage.png
+    - assets/images/desert.png
+    - assets/images/indianbread.png
+    - assets/images/softdrink.png
+    - assets/images/soup.png
+    - assets/images/starter.png
 
   # fonts:
   #   - family: Schyler
