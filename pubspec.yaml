@@ -46,6 +46,9 @@ flutter:
     - assets/images/softdrink.png
     - assets/images/soup.png
     - assets/images/starter.png
+    - assets/images/starter2.jpg
+    - assets/images/volcano.jpg
+    - assets/images/paneerbuttermasala.jpg
 
   # fonts:
   #   - family: Schyler
