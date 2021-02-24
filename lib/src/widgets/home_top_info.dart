@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 
 class HomeTopInfo extends StatelessWidget {
   final textStyle = TextStyle(
-      fontSize: 32.0, fontWeight: FontWeight.bold, color: Colors.black);
+    fontSize: 32.0,
+    fontWeight: FontWeight.bold,
+    // color: Colors.black,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +30,7 @@ class HomeTopInfo extends StatelessWidget {
           Icon(
             Icons.notifications_none,
             size: 30.0,
-            color: Theme.of(context).primaryColor,
+            color: Colors.lightBlueAccent,
           ),
         ],
       ),

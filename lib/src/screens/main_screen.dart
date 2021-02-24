@@ -74,10 +74,10 @@ class _MainScreenState extends State<MainScreen> {
           ? AppBar(
               title: Text(
                 "Your Food Cart",
-                style: TextStyle(color: Colors.black),
+                // style: TextStyle(color: Colors.black),
               ),
               centerTitle: true,
-              backgroundColor: Colors.white,
+              // backgroundColor: Colors.white,
               elevation: 0.0,
             )
           : null,

@@ -5,6 +5,7 @@ class SearchField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       elevation: 5.0,
+      shadowColor: Colors.black,
       borderRadius: BorderRadius.circular(30.0),
       child: TextField(
         decoration: InputDecoration(
@@ -16,7 +17,7 @@ class SearchField extends StatelessWidget {
             borderRadius: BorderRadius.circular(30.0),
             child: Icon(
               Icons.search,
-              color: Colors.black,
+              // color: Colors.black,
             ),
           ),
           border: InputBorder.none,

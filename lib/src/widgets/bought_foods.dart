@@ -69,27 +69,27 @@ class _BoughtFoodsState extends State<BoughtFoods> {
                       children: <Widget>[
                         Icon(
                           Icons.star,
-                          color: Theme.of(context).primaryColor,
+                          // color: Theme.of(context).primaryColor,
                           size: 16.0,
                         ),
                         Icon(
                           Icons.star,
-                          color: Theme.of(context).primaryColor,
+                          // color: Theme.of(context).primaryColor,
                           size: 16.0,
                         ),
                         Icon(
                           Icons.star,
-                          color: Theme.of(context).primaryColor,
+                          // color: Theme.of(context).primaryColor,
                           size: 16.0,
                         ),
                         Icon(
                           Icons.star,
-                          color: Theme.of(context).primaryColor,
+                          // color: Theme.of(context).primaryColor,
                           size: 16.0,
                         ),
                         Icon(
                           Icons.star,
-                          color: Theme.of(context).primaryColor,
+                          // color: Theme.of(context).primaryColor,
                           size: 16.0,
                         ),
                         SizedBox(

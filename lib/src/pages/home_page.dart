@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      // backgroundColor: Colors.white,
       body: ListView(
         padding: EdgeInsets.only(top: 50.0, left: 20.0, right: 20.0),
         children: <Widget>[
@@ -43,9 +43,10 @@ class _HomePageState extends State<HomePage> {
               Text(
                 "Frequently Bought Foods",
                 style: TextStyle(
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black),
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                  // color: Colors.black,
+                ),
               ),
               GestureDetector(
                 onTap: () {},
