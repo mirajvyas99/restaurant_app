@@ -1,3 +1,5 @@
+import 'package:food_app_flutter_zone/src/widgets/button.dart';
+
 import 'signup_page.dart';
 import 'package:flutter/material.dart';
 
@@ -54,7 +56,7 @@ class _SignInPageState extends State<SignInPage> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 Text(
-                  'Forgotton Password ?',
+                  'Forgot Password ?',
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.blueAccent,
@@ -77,22 +79,7 @@ class _SignInPageState extends State<SignInPage> {
               ),
             ),
             SizedBox(height: 20.0),
-            Container(
-              height: 50.0,
-              decoration: BoxDecoration(
-                color: Colors.blue,
-                borderRadius: BorderRadius.circular(25.0),
-              ),
-              child: Center(
-                child: Text(
-                  'Sign In',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18.0),
-                ),
-              ),
-            ),
+            Button(btnText: "Sign In"),
             Divider(height: 20.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
