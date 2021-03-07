@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:food_app_flutter_zone/src/models/food_model.dart';
+import 'package:food_app_flutter_zone/src/scoped-model/main_model.dart';
 import 'package:food_app_flutter_zone/src/widgets/button.dart';
+import 'package:scoped_model/scoped_model.dart';
 
 class AddFoodItem extends StatefulWidget {
   AddFoodItem({Key key}) : super(key: key);
@@ -42,19 +44,25 @@ class _AddFoodItemState extends State<AddFoodItem> {
                 _buildTextFormField("Price"),
                 _buildTextFormField("Discount"),
                 SizedBox(height: 130),
-                GestureDetector(
-                  child: Button(btnText: "Add Food Item"),
-                  onTap: () {
-                    if (_foodItemFormKey.currentState.validate()) {
-                      _foodItemFormKey.currentState.save();
-                      Food(
-                        name: title,
-                        category: category,
-                        description: description,
-                        price: double.parse(price),
-                        discount: double.parse(discount),
-                      );
-                    }
+                ScopedModelDescendant(
+                  builder:
+                      (BuildContext context, Widget child, MainModel model) {
+                    return GestureDetector(
+                      child: Button(btnText: "Add Food Item"),
+                      onTap: () {
+                        if (_foodItemFormKey.currentState.validate()) {
+                          _foodItemFormKey.currentState.save();
+                          Food(
+                            name: title,
+                            category: category,
+                            description: description,
+                            price: double.parse(price),
+                            discount: double.parse(discount),
+                          );
+                          model.addFood(food);
+                        }
+                      },
+                    );
                   },
                 ),
               ],
