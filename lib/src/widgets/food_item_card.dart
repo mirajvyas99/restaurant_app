@@ -2,6 +2,12 @@ import 'package:flutter/material.dart';
 import 'small_button.dart';
 
 class FoodItemCard extends StatelessWidget {
+  final String title;
+  final String description;
+  final String price;
+
+  FoodItemCard(this.title, this.description, this.price);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -44,7 +50,7 @@ class FoodItemCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                'Name Of Food',
+                '$title',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 16.0,
@@ -53,7 +59,7 @@ class FoodItemCard extends StatelessWidget {
               SizedBox(height: 15.0),
               Container(
                 width: 200.0,
-                child: Text('This is the Description of food item'),
+                child: Text('$description'),
               ),
               SizedBox(height: 15.0),
               Container(
@@ -62,7 +68,7 @@ class FoodItemCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Text(
-                      '₹ 90.0',
+                      '₹ $price',
                       style: TextStyle(
                           color: Colors.blue,
                           fontWeight: FontWeight.bold,
