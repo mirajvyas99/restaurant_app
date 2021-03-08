@@ -87,16 +87,25 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildFoodItems(Food food) {
-    return Container(
-      margin: EdgeInsets.only(bottom: 20.0),
-      child: BoughtFoods(
-        id: food.id,
-        name: food.name,
-        imagePath: "assets/images/lunch.jpeg",
-        category: food.category,
-        discount: food.discount,
-        price: food.price,
-        ratings: food.ratings,
+    return GestureDetector(
+      // onTap: () {
+      //   Navigator.of(context).push(MaterialPageRoute(
+      //     builder: (BuildContext context) => FoodDetailsPage(
+      //       food: food,
+      //     ),
+      //   ));
+      // },
+      child: Container(
+        margin: EdgeInsets.only(bottom: 20.0),
+        child: BoughtFoods(
+          id: food.id,
+          name: food.name,
+          imagePath: "assets/images/lunch.jpeg",
+          category: food.category,
+          discount: food.discount,
+          price: food.price,
+          ratings: food.ratings,
+        ),
       ),
     );
   }

@@ -40,12 +40,11 @@ class _FavoritePageState extends State<FavoritePage> {
                 itemBuilder: (BuildContext lctx, int index) {
                   return GestureDetector(
                     onTap: () async {
-                      final bool response = await Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (BuildContext context) =>
-                              AddFoodItem(food: model.foods[index]),
-                        ),
-                      );
+                      final bool response =
+                          await Navigator.of(context).push(MaterialPageRoute(
+                              builder: (BuildContext context) => AddFoodItem(
+                                    food: model.foods[index],
+                                  )));
                       if (response) {
                         SnackBar snackBar = SnackBar(
                           duration: Duration(seconds: 2),
@@ -75,24 +74,3 @@ class _FavoritePageState extends State<FavoritePage> {
     );
   }
 }
-
-// Container(
-// color: Colors.white,
-// padding: const EdgeInsets.symmetric(horizontal: 16.0),
-// child: ScopedModelDescendant<MainModel>(
-// builder: (BuildContext context, Widget child, MainModel model) {
-// model.fetchFoods();
-// List<Food> foods = model.foods;
-// return Column(
-// crossAxisAlignment: CrossAxisAlignment.start,
-// children: foods.map((Food food) {
-// return FoodItemCard(
-// food.name,
-// food.description,
-// food.price.toString(),
-// );
-// }).toList(),
-// );
-// },
-// ),
-// ),

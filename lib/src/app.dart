@@ -13,6 +13,7 @@ class App extends StatelessWidget {
       model: mainModel,
       child: MaterialApp(
         title: "Food Delivery App",
+        theme: ThemeData(primaryColor: Colors.blueAccent),
         debugShowCheckedModeBanner: false,
         home: MainScreen(model: mainModel),
         // home: AddFoodItem(),
