@@ -7,7 +7,6 @@ import '../widgets/bought_foods.dart';
 import '../widgets/food_category.dart';
 import '../widgets/home_top_info.dart';
 import '../widgets/search_field.dart';
-import '../widgets/bought_foods.dart';
 
 //Data
 import '../data/food_data.dart';
@@ -17,9 +16,9 @@ import '../models/food_model.dart';
 import '../scoped-model/food_model.dart';
 
 class HomePage extends StatefulWidget {
-  final FoodModel foodModel;
-
-  HomePage(this.foodModel);
+  // final FoodModel foodModel;
+  //
+  // HomePage(this.foodModel);
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -29,7 +28,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    widget.foodModel.fetchFoods();
+    // widget.foodModel.fetchFoods();
     super.initState();
   }
 
@@ -93,7 +92,7 @@ class _HomePageState extends State<HomePage> {
       child: BoughtFoods(
         id: food.id,
         name: food.name,
-        imagePath: food.imagePath,
+        imagePath: "assets/images/lunch.jpeg",
         category: food.category,
         discount: food.discount,
         price: food.price,

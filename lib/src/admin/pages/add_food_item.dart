@@ -116,7 +116,7 @@ class _AddFoodItemState extends State<AddFoodItem> {
 
       if (widget.food != null) {
         //i want to edit the food item
-        Map<String, dynamic> updateFoodItem = {
+        Map<String, dynamic> updatedFoodItem = {
           "name": title,
           "category": category,
           "description": description,
