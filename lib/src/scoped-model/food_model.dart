@@ -1,5 +1,6 @@
+import 'dart:async';
 import 'dart:convert';
-import 'package:food_app_flutter_zone/src/models/food_model.dart';
+import '../models/food_model.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:http/http.dart' as http;
 
@@ -15,10 +16,14 @@ class FoodModel extends Model {
     return List.from(_foods);
   }
 
+  int get foodLength {
+    return _foods.length;
+  }
+
   Future<bool> addFood(Food food) async {
-    // _foods.add(food);
     _isLoading = true;
     notifyListeners();
+
     try {
       final Map<String, dynamic> foodData = {
         "title": food.name,
@@ -41,9 +46,11 @@ class FoodModel extends Model {
         discount: food.discount,
         price: food.price,
       );
+
+      _foods.add(foodWithId);
       _isLoading = false;
       notifyListeners();
-      fetchFoods();
+      // fetchFoods();
       return Future.value(true);
     } catch (e) {
       _isLoading = false;
@@ -53,11 +60,14 @@ class FoodModel extends Model {
     }
   }
 
-  void fetchFoods() {
-    http
-        .get(
-            "https://restaurant-app-cb62a-default-rtdb.firebaseio.com/foods.json")
-        .then((http.Response response) {
+  Future<bool> fetchFoods() async {
+    _isLoading = true;
+    notifyListeners();
+
+    try {
+      final http.Response response = await http.get(
+          "https://restaurant-app-cb62a-default-rtdb.firebaseio.com/foods.json");
+
       final Map<String, dynamic> fetchedData = json.decode(response.body);
       final List<Food> fetchedFoodItems = [];
 
@@ -69,13 +79,62 @@ class FoodModel extends Model {
           name: foodData["title"],
           description: foodData["description"],
           category: foodData["category"],
-          price: foodData["price"],
-          discount: foodData["discount"],
+          price: double.parse(foodData["price"].toString()),
+          discount: double.parse(foodData["discount"].toString()),
         );
         foodItems.add(foodItem);
       });
+
       _foods = foodItems;
+      _isLoading = false;
       notifyListeners();
-    });
+      return Future.value(true);
+    } catch (e) {
+      _isLoading = false;
+      notifyListeners();
+      return Future.value(false);
+    }
+  }
+
+  Future<bool> updateFood(Map<String, dynamic> foodData, String foodId) async {
+    _isLoading = true;
+
+    //get the food by id
+    Food theFood = getFoodItemById(foodId);
+
+    //get the index of the food
+    int foodIndex = _foods.indexOf(theFood);
+    try {
+      await http.put(
+          "https://restaurant-app-cb62a-default-rtdb.firebaseio.com/foods/${foodId}.json",
+          body: json.encode(foodData));
+      Food updatedFoodItem = Food(
+        id: foodId,
+        name: foodData['title'],
+        category: foodData['category'],
+        discount: foodData['discount'],
+        price: foodData['price'],
+        description: foodData['description'],
+      );
+      _foods[foodIndex] = updatedFoodItem;
+      _isLoading = false;
+      notifyListeners();
+      return Future.value(true);
+    } catch (error) {
+      _isLoading = false;
+      notifyListeners();
+      return Future.value(false);
+    }
+  }
+
+  Food getFoodItemById(String foodId) {
+    Food food;
+    for (int i = 0; i < _foods.length; i++) {
+      if (_foods[i].id == foodId) {
+        food = _foods[i];
+        break;
+      }
+    }
+    return food;
   }
 }

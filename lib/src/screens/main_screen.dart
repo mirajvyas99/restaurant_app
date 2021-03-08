@@ -5,7 +5,7 @@ import '../scoped-model/main_model.dart';
 //Pages
 import '../pages/home_page.dart';
 import '../pages/order_page.dart';
-import '../pages/favorite_page.dart';
+import '../pages/explore_page.dart';
 import '../pages/profile_page.dart';
 
 class MainScreen extends StatefulWidget {
@@ -29,7 +29,8 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   void initState() {
-    widget.model.fetchFoods();
+    // widget.model.fetchFoods();
+
     homePage = HomePage();
     orderPage = OrderPage();
     favoritePage = FavoritePage();
@@ -44,21 +45,23 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: currentTabIndex == 2
-            ? AppBar(
-                title: Text(
-                  "Your Food Cart",
-                  style: TextStyle(color: Colors.black),
-                ),
-                centerTitle: true,
-                backgroundColor: Colors.white,
-                elevation: 0.0,
-              )
-            : AppBar(
-                backgroundColor: Colors.white,
-                elevation: 0,
-                iconTheme: IconThemeData(color: Colors.black),
-              ),
+        appBar: AppBar(
+          title: Text(
+            currentTabIndex == 0
+                ? "RESTAURANT"
+                : currentTabIndex == 1
+                    ? "All Food Items"
+                    : currentTabIndex == 2 ? "Your Order" : "Profile",
+            style: TextStyle(
+                color: Colors.black,
+                fontSize: 16.0,
+                fontWeight: FontWeight.bold),
+          ),
+          centerTitle: true,
+          backgroundColor: Colors.white,
+          elevation: 0,
+          iconTheme: IconThemeData(color: Colors.black),
+        ),
         drawer: Drawer(
           child: Column(
             children: <Widget>[
