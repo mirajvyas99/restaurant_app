@@ -11,6 +11,7 @@ class _OrderPageState extends State<OrderPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: ListView(
         padding: EdgeInsets.symmetric(horizontal: 10.0),
         scrollDirection: Axis.vertical,
@@ -132,8 +133,9 @@ class _OrderPageState extends State<OrderPage> {
           ),
           GestureDetector(
             onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (BuildContext context) => SignInPage()),
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                    builder: (BuildContext context) => SignInPage()),
               );
             },
             child: Container(

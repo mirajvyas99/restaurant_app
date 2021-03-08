@@ -22,7 +22,7 @@ class FoodItemCard extends StatelessWidget {
           BoxShadow(
             blurRadius: 5.0,
             offset: Offset(0, 3.0),
-            color: Colors.black38, //black38
+            color: Colors.black12, //black38
           ),
         ],
       ),

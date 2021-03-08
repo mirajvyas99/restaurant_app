@@ -14,9 +14,10 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Container(
-          padding: EdgeInsets.symmetric(vertical: 50.0, horizontal: 20.0),
+          padding: EdgeInsets.symmetric(horizontal: 20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -61,7 +62,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         height: 10.0,
                       ),
                       Text(
-                        "+91 81414 18054",
+                        "+91 81414 18054  ",
                         style: TextStyle(color: Colors.grey),
                       ),
                       SizedBox(

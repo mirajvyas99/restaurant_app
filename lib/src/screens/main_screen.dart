@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_app_flutter_zone/src/admin/pages/add_food_item.dart';
 import '../scoped-model/main_model.dart';
 
 //Pages
@@ -20,6 +21,7 @@ class _MainScreenState extends State<MainScreen> {
   List<Widget> pages;
   Widget currentPage;
 
+  //Pages
   HomePage homePage;
   OrderPage orderPage;
   FavoritePage favoritePage;
@@ -32,59 +34,80 @@ class _MainScreenState extends State<MainScreen> {
     orderPage = OrderPage();
     favoritePage = FavoritePage();
     profilePage = ProfilePage();
-    pages = [
-      homePage,
-      favoritePage,
-      orderPage,
-      profilePage,
-    ];
+    pages = [homePage, favoritePage, orderPage, profilePage];
+
     currentPage = homePage;
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        onTap: (int index) {
-          setState(() {
-            currentTabIndex = index;
-            currentPage = pages[index];
-          });
-        },
-        currentIndex: currentTabIndex,
-        type: BottomNavigationBarType.fixed,
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text("Home"),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.explore),
-            title: Text("Explore"),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            title: Text("Orders"),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            title: Text("Profile"),
-          ),
-        ],
-      ),
-      body: currentPage,
-      appBar: currentTabIndex == 2
-          ? AppBar(
-              title: Text(
-                "Your Food Cart",
-                style: TextStyle(color: Colors.black),
+    return SafeArea(
+      child: Scaffold(
+        appBar: currentTabIndex == 2
+            ? AppBar(
+                title: Text(
+                  "Your Food Cart",
+                  style: TextStyle(color: Colors.black),
+                ),
+                centerTitle: true,
+                backgroundColor: Colors.white,
+                elevation: 0.0,
+              )
+            : AppBar(
+                backgroundColor: Colors.white,
+                elevation: 0,
+                iconTheme: IconThemeData(color: Colors.black),
               ),
-              centerTitle: true,
-              backgroundColor: Colors.white,
-              elevation: 0.0,
-            )
-          : null,
+        drawer: Drawer(
+          child: Column(
+            children: <Widget>[
+              ListTile(
+                onTap: () {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (BuildContext context) => AddFoodItem(),
+                  ));
+                },
+                leading: Icon(Icons.fastfood),
+                title: Text(
+                  "Add Food Item",
+                  style: TextStyle(fontSize: 16.0),
+                ),
+              ),
+            ],
+          ),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          onTap: (int index) {
+            setState(() {
+              currentTabIndex = index;
+              currentPage = pages[index];
+            });
+          },
+          currentIndex: currentTabIndex,
+          type: BottomNavigationBarType.fixed,
+          items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              title: Text("Home"),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.explore),
+              title: Text("Explore"),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_cart),
+              title: Text("Orders"),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              title: Text("Profile"),
+            ),
+          ],
+        ),
+        body: currentPage,
+      ),
     );
   }
 }
