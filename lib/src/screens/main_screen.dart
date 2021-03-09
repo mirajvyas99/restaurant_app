@@ -61,6 +61,16 @@ class _MainScreenState extends State<MainScreen> {
           backgroundColor: Colors.white,
           elevation: 0,
           iconTheme: IconThemeData(color: Colors.black),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(
+                Icons.notifications_none,
+                size: 30.0,
+                color: Colors.lightBlueAccent,
+              ),
+              onPressed: () {},
+            )
+          ],
         ),
         drawer: Drawer(
           child: Column(

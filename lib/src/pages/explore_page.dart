@@ -2,9 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_app_flutter_zone/src/admin/pages/add_food_item.dart';
 import '../models/food_model.dart';
+import '../scoped-model/food_model.dart';
 import '../scoped-model/main_model.dart';
 import 'package:scoped_model/scoped_model.dart';
 import '../widgets/food_item_card.dart';
+import '../widgets/show_dialog.dart';
 
 class FavoritePage extends StatefulWidget {
   final MainModel model;
@@ -58,6 +60,15 @@ class _FavoritePageState extends State<FavoritePage> {
                         _explorePageScaffoldKey.currentState
                             .showSnackBar(snackBar);
                       }
+                    },
+                    onDoubleTap: () {
+                      //delete food item
+                      showLoadingIndicator(context, "Deleting Food Item...");
+                      model
+                          .deleteFood(model.foods[index].id)
+                          .then((bool response) {
+                        Navigator.of(context).pop();
+                      });
                     },
                     child: FoodItemCard(
                       model.foods[index].name,

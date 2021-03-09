@@ -69,7 +69,7 @@ class FoodModel extends Model {
           "https://restaurant-app-cb62a-default-rtdb.firebaseio.com/foods.json");
 
       final Map<String, dynamic> fetchedData = json.decode(response.body);
-      final List<Food> fetchedFoodItems = [];
+      // final List<Food> fetchedFoodItems = [];
 
       final List<Food> foodItems = [];
 
@@ -117,6 +117,24 @@ class FoodModel extends Model {
         description: foodData['description'],
       );
       _foods[foodIndex] = updateFoodItem;
+      _isLoading = false;
+      notifyListeners();
+      return Future.value(true);
+    } catch (error) {
+      _isLoading = false;
+      notifyListeners();
+      return Future.value(false);
+    }
+  }
+
+  Future<bool> deleteFood(String foodId) async {
+    _isLoading = true;
+    notifyListeners();
+    try {
+      final http.Response response = await http.delete(
+          "https://restaurant-app-cb62a-default-rtdb.firebaseio.com/foods/${foodId}.json");
+      //delete item from List of food items
+      _foods.removeWhere((Food food) => food.id == foodId);
       _isLoading = false;
       notifyListeners();
       return Future.value(true);

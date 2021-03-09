@@ -115,7 +115,7 @@ class _AddFoodItemState extends State<AddFoodItem> {
       _foodItemFormKey.currentState.save();
 
       if (widget.food != null) {
-        //i want to edit the food item
+        //i want to update the food item
         Map<String, dynamic> updatedFoodItem = {
           "name": title,
           "category": category,
