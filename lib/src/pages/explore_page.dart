@@ -31,6 +31,7 @@ class _FavoritePageState extends State<FavoritePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _explorePageScaffoldKey,
+      backgroundColor: Colors.white,
       body: ScopedModelDescendant<MainModel>(
         builder: (BuildContext context, Widget child, MainModel model) {
           // model.fetchFoods(); //this will fetch and notifyListeners() will be called

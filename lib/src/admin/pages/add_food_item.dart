@@ -14,7 +14,11 @@ class AddFoodItem extends StatefulWidget {
 }
 
 class _AddFoodItemState extends State<AddFoodItem> {
-  String title, category, description, price, discount;
+  String title;
+  String category;
+  String description;
+  String price;
+  String discount;
 
   GlobalKey<FormState> _foodItemFormKey = GlobalKey();
   GlobalKey<ScaffoldState> _scaffoldStateKey = GlobalKey();
@@ -77,7 +81,7 @@ class _AddFoodItemState extends State<AddFoodItem> {
                     _buildTextFormField("Description", maxLine: 5),
                     _buildTextFormField("Price"),
                     _buildTextFormField("Discount"),
-                    SizedBox(height: 130),
+                    SizedBox(height: 70.0),
                     ScopedModelDescendant(
                       builder: (BuildContext context, Widget child,
                           MainModel model) {
@@ -117,7 +121,7 @@ class _AddFoodItemState extends State<AddFoodItem> {
       if (widget.food != null) {
         //i want to update the food item
         Map<String, dynamic> updatedFoodItem = {
-          "name": title,
+          "title": title,
           "category": category,
           "description": description,
           "price": double.parse(price),
@@ -137,6 +141,7 @@ class _AddFoodItemState extends State<AddFoodItem> {
               style: TextStyle(color: Colors.white, fontSize: 16.0),
             ),
           );
+          _scaffoldStateKey.currentState.showSnackBar(snackBar);
         }
       } else if (widget.food == null) {
         //i want to add new food item

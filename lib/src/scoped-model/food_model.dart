@@ -108,14 +108,16 @@ class FoodModel extends Model {
       await http.put(
           "https://restaurant-app-cb62a-default-rtdb.firebaseio.com/foods/${foodId}.json",
           body: json.encode(foodData));
+
       Food updateFoodItem = Food(
         id: foodId,
-        name: foodData['title'],
+        name: foodData["title"],
         category: foodData['category'],
         discount: foodData['discount'],
         price: foodData['price'],
         description: foodData['description'],
       );
+
       _foods[foodIndex] = updateFoodItem;
       _isLoading = false;
       notifyListeners();
