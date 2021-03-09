@@ -1,4 +1,4 @@
-import 'package:food_app_flutter_zone/src/widgets/button.dart';
+import 'package:restaurant_app/src/widgets/button.dart';
 
 import 'signup_page.dart';
 import 'package:flutter/material.dart';
@@ -41,74 +41,77 @@ class _SignInPageState extends State<SignInPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'Sign In',
-              style: TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 100.0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                Text(
-                  'Forgot Password ?',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.blueAccent,
-                      fontSize: 18.0),
-                ),
-              ],
-            ),
-            SizedBox(height: 10.0),
-            Card(
-              elevation: 5.0,
-              child: Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Column(
-                  children: <Widget>[
-                    _buildEmailTextField(),
-                    SizedBox(height: 20.0),
-                    _buildPasswordTextField(),
-                  ],
-                ),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.grey.shade100,
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                'Sign In',
+                style: TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold),
               ),
-            ),
-            SizedBox(height: 20.0),
-            Button(btnText: "Sign In"),
-            Divider(height: 20.0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  'Don\'t Have an account ?',
-                  style: TextStyle(
-                      color: Color(0xFFBDC2CB),
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.bold),
-                ),
-                SizedBox(height: 20.0),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (BuildContext context) => SignUpPage()));
-                  },
-                  child: Text(
-                    'Sign Up',
+              SizedBox(height: 100.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  Text(
+                    'Forgot Password ?',
                     style: TextStyle(
-                      color: Colors.blueAccent,
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.bold,
-                    ),
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blueAccent,
+                        fontSize: 18.0),
+                  ),
+                ],
+              ),
+              SizedBox(height: 10.0),
+              Card(
+                elevation: 5.0,
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Column(
+                    children: <Widget>[
+                      _buildEmailTextField(),
+                      SizedBox(height: 20.0),
+                      _buildPasswordTextField(),
+                    ],
                   ),
                 ),
-              ],
-            ),
-          ],
+              ),
+              SizedBox(height: 20.0),
+              Button(btnText: "Sign In"),
+              Divider(height: 20.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    'Don\'t Have an account ?',
+                    style: TextStyle(
+                        color: Color(0xFFBDC2CB),
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 20.0),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (BuildContext context) => SignUpPage()));
+                    },
+                    child: Text(
+                      'Sign Up',
+                      style: TextStyle(
+                        color: Colors.blueAccent,
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

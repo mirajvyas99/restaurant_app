@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_app_flutter_zone/src/scoped-model/food_model.dart';
+import 'package:restaurant_app/src/scoped-model/food_model.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'admin/pages/add_food_item.dart';
 import 'scoped-model/main_model.dart';

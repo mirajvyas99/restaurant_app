@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_app_flutter_zone/src/admin/pages/add_food_item.dart';
+import 'package:restaurant_app/src/admin/pages/add_food_item.dart';
 import '../scoped-model/main_model.dart';
-// import "package:restaurant_app/src/admin/pages/add_food_item.dart";
 
 //Pages
 import '../pages/home_page.dart';
