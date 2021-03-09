@@ -7,6 +7,7 @@ import '../widgets/bought_foods.dart';
 import '../widgets/food_category.dart';
 import '../widgets/home_top_info.dart';
 import '../widgets/search_field.dart';
+import 'food_details_page.dart';
 
 //Data
 import '../data/food_data.dart';
@@ -88,13 +89,13 @@ class _HomePageState extends State<HomePage> {
 
   Widget _buildFoodItems(Food food) {
     return GestureDetector(
-      // onTap: () {
-      //   Navigator.of(context).push(MaterialPageRoute(
-      //     builder: (BuildContext context) => FoodDetailsPage(
-      //       food: food,
-      //     ),
-      //   ));
-      // },
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (BuildContext context) => FoodDetailsPage(
+            food: food,
+          ),
+        ));
+      },
       child: Container(
         margin: EdgeInsets.only(bottom: 20.0),
         child: BoughtFoods(
