@@ -103,7 +103,6 @@ class UserModel extends Model {
     print("The response: $response");
     UserInfo foundUserInfo;
 
-    print("the user Infos: $_userInfos");
     if (response) {
       for (int i = 0; i < _userInfos.length; i++) {
         if (_userInfos[i].userId == userId) {
