@@ -5,5 +5,6 @@ import 'user_scoped_model.dart';
 class MainModel extends Model with FoodModel, UserModel {
   void fetchAll() {
     fetchFoods();
+    fetchUserInfos();
   }
 }
