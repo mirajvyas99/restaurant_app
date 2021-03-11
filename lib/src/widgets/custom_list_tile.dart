@@ -38,7 +38,7 @@ class CustomListTile extends StatelessWidget {
                 model.logout();
               }
               if("$text" == "Payment"){
-                Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => PaymentPage()));
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => PaymentPage()));
               }
             },
           ),
