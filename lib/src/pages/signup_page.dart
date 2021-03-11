@@ -1,5 +1,6 @@
 import 'package:scoped_model/scoped_model.dart';
 import '../scoped-model/main_model.dart';
+import '../widgets/show_dialog.dart';
 import 'signin_page.dart';
 import 'package:flutter/material.dart';
 
@@ -219,6 +220,13 @@ class _SignUpPageState extends State<SignUpPage> {
       _formKey.currentState.save();
     }
     print("The Email: $_email, The Password: $_password");
-    authenticate(_email, _password);
+    authenticate(_email, _password).then((final response){
+      Navigator.of(context).pop();
+      if(!response['hasError']){
+        // TODO: Navigate to homepage
+        }else{
+        // TODO: Display the error message in the snackbar
+      }
+    });
   }
 }
