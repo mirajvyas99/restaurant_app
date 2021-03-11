@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:restaurant_app/src/enums/auth_mode.dart';
 import 'package:restaurant_app/src/models/user_info_model.dart';
 import 'package:scoped_model/scoped_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../models/user_model.dart';
 import 'package:http/http.dart' as http;
 
@@ -159,6 +160,7 @@ class UserModel extends Model {
       }
       
       Map<String, dynamic> responseBody = json.decode(response.body);
+      SharedPreferences prefs = await SharedPreferences.getInstance();
 
       if(responseBody.containsKey('idToken')){
         _authenticatedUser = User(
@@ -171,14 +173,24 @@ class UserModel extends Model {
 
           _authenticatedUserInfo = await getUserInfo(responseBody['localId']);
 
-          print("The authenticated usertype: ${_authenticatedUserInfo.userType}");
+          prefs.setString('username', _authenticatedUserInfo.username);
+          prefs.setString('email', _authenticatedUserInfo.email);
+          prefs.setString('userType', _authenticatedUserInfo.userType);
 
           message = "Signed In Successfully";
+
         }else if(authMode == AuthMode.SignUp){
+
           userInfo['localId'] = responseBody['localId'];
           addUserInfo(userInfo);
+          prefs.setString('username', userInfo['username']);
+          prefs.setString('email', userInfo['email']);
+          prefs.setString('userType', userInfo['userType']);
           message = "Signed Up Successfully";
         }
+        prefs.setString("token", responseBody["idToken"]);
+        prefs.setString("expiryTime", responseBody["expiresIn"]);
+
       }else{
         hasError = true;
         if(responseBody['error']['message'] == 'EMAIL_EXISTS'){
@@ -209,5 +221,21 @@ class UserModel extends Model {
         'hasError': !hasError,
       };
     }
+  }
+
+  void autoLogin() async{
+    SharedPreferences prefs =await SharedPreferences.getInstance();
+    String token = prefs.getString("token");
+
+    if(token != null){
+      _authenticatedUser = null;
+      _authenticatedUserInfo = null;
+      notifyListeners();
+    }
+  }
+
+  void logout(){
+    _authenticatedUser = null;
+    _authenticatedUserInfo = null;
   }
 }

@@ -19,7 +19,6 @@ class _ProfilePageState extends State<ProfilePage> {
     return ScopedModelDescendant(
       builder: (BuildContext context, Widget child, MainModel model){
         UserInfo userInfo = model.getUserDetails(model.authenticatedUser.id);
-        print("The user info: $userInfo");
         return Scaffold(
           backgroundColor: Colors.white,
           body: SingleChildScrollView(
@@ -97,58 +96,6 @@ class _ProfilePageState extends State<ProfilePage> {
                     height: 30.0,
                   ),
                   Text(
-                    'Account',
-                    style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(
-                    height: 20.0,
-                  ),
-                  Card(
-                    elevation: 3.0,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                      child: Column(
-                        children: [
-                          CustomListTile(
-                            icon: Icons.location_on,
-                            text: "Location",
-                          ),
-                          Divider(
-                            height: 10.0,
-                            color: Colors.grey,
-                          ),
-                          CustomListTile(
-                            icon: Icons.visibility,
-                            text: "Change Password",
-                          ),
-                          Divider(
-                            height: 10.0,
-                            color: Colors.grey,
-                          ),
-                          CustomListTile(
-                            icon: Icons.shopping_cart,
-                            text: "Shipping",
-                          ),
-                          Divider(
-                            height: 10.0,
-                            color: Colors.grey,
-                          ),
-                          CustomListTile(
-                            icon: Icons.payment,
-                            text: "Payment",
-                          ),
-                          Divider(
-                            height: 10.0,
-                            color: Colors.grey,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 30.0,
-                  ),
-                  Text(
                     "Notifications",
                     style: TextStyle(
                       fontSize: 20.0,
@@ -208,10 +155,6 @@ class _ProfilePageState extends State<ProfilePage> {
                               ),
                             ],
                           ),
-                          Divider(
-                            height: 10.0,
-                            color: Colors.grey,
-                          ),
                         ],
                       ),
                     ),
@@ -220,39 +163,45 @@ class _ProfilePageState extends State<ProfilePage> {
                     height: 30.0,
                   ),
                   Text(
-                    "Other",
-                    style: TextStyle(
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    'Account',
+                    style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
                     height: 20.0,
                   ),
                   Card(
+                    elevation: 3.0,
                     child: Padding(
-                      padding: EdgeInsets.all(16.0),
-                      child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text("Language", style: TextStyle(fontSize: 16.0)),
-                            // SizedBox(height: 10.0,),
-                            Divider(
-                              height: 30.0,
-                              color: Colors.grey,
-                            ),
-                            Text("Currency", style: TextStyle(fontSize: 16.0)),
-                            // SizedBox(height: 10.0,),
-                            Divider(
-                              height: 30.0,
-                              color: Colors.grey,
-                            ),
-                          ],
-                        ),
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        children: [
+                          CustomListTile(
+                            icon: Icons.location_on,
+                            text: "Location",
+                          ),
+
+                          Divider(
+                            height: 10.0,
+                            color: Colors.grey,
+                          ),
+                          CustomListTile(
+                            icon: Icons.payment,
+                            text: "Payment",
+                          ),
+                          Divider(
+                            height: 10.0,
+                            color: Colors.grey,
+                          ),
+                          CustomListTile(
+                            icon: Icons.logout,
+                            text: "Logout",
+                          ),
+                        ],
                       ),
                     ),
+                  ),
+                  SizedBox(
+                    height: 30.0,
                   ),
                 ],
               ),
