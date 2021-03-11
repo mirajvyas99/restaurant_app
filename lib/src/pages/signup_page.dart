@@ -1,3 +1,4 @@
+import 'package:restaurant_app/src/enums/auth_mode.dart';
 import 'package:scoped_model/scoped_model.dart';
 import '../scoped-model/main_model.dart';
 import '../widgets/show_dialog.dart';
@@ -19,6 +20,7 @@ class _SignUpPageState extends State<SignUpPage> {
   // String _confirmPassword;
 
   GlobalKey<FormState> _formKey = GlobalKey();
+  GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
 
   Widget _buildEmailTextField() {
     return TextFormField(
@@ -117,6 +119,7 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        key: _scaffoldKey,
         resizeToAvoidBottomPadding: false,
         backgroundColor: Colors.grey.shade100,
         body: Padding(
@@ -220,12 +223,20 @@ class _SignUpPageState extends State<SignUpPage> {
       _formKey.currentState.save();
     }
     print("The Email: $_email, The Password: $_password");
-    authenticate(_email, _password).then((final response){
+    authenticate(_email, _password, authMode: AuthMode.SignUp).then((final response){
       Navigator.of(context).pop();
       if(!response['hasError']){
-        // TODO: Navigate to homepage
-        }else{
-        // TODO: Display the error message in the snackbar
+        Navigator.of(context).pop();
+        Navigator.of(context).pushReplacementNamed("/mainscreen");
+       }else{
+        Navigator.of(context).pop();
+        _scaffoldKey.currentState.showSnackBar(
+          SnackBar(
+            duration: Duration(seconds: 2),
+            backgroundColor: Colors.red,
+            content: Text(response['message']),
+          ),
+        );
       }
     });
   }

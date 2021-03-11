@@ -20,6 +20,7 @@ class App extends StatelessWidget {
         // home: AddFoodItem(),
         routes: {
           "/" : (BuildContext context) => SignInPage(),
+          "/mainscreen" : (BuildContext context) => MainScreen(),
         },
       ),
     );
