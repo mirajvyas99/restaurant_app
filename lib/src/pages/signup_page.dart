@@ -221,23 +221,29 @@ class _SignUpPageState extends State<SignUpPage> {
   void onSubmit(Function authenticate) {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
+
+      Map<String, dynamic> userInfo = {
+        "email": _email,
+        "username": _username,
+        "userType": "customer",
+      };
+
+      authenticate(_email, _password, authMode: AuthMode.SignUp, userInfo: userInfo).then((final response){
+        Navigator.of(context).pop();
+        if(!response['hasError']){
+          Navigator.of(context).pop();
+          Navigator.of(context).pushReplacementNamed("/mainscreen");
+        }else{
+          Navigator.of(context).pop();
+          _scaffoldKey.currentState.showSnackBar(
+            SnackBar(
+              duration: Duration(seconds: 2),
+              backgroundColor: Colors.red,
+              content: Text(response['message']),
+            ),
+          );
+        }
+      });
     }
-    print("The Email: $_email, The Password: $_password");
-    authenticate(_email, _password, authMode: AuthMode.SignUp).then((final response){
-      Navigator.of(context).pop();
-      if(!response['hasError']){
-        Navigator.of(context).pop();
-        Navigator.of(context).pushReplacementNamed("/mainscreen");
-       }else{
-        Navigator.of(context).pop();
-        _scaffoldKey.currentState.showSnackBar(
-          SnackBar(
-            duration: Duration(seconds: 2),
-            backgroundColor: Colors.red,
-            content: Text(response['message']),
-          ),
-        );
-      }
-    });
   }
 }

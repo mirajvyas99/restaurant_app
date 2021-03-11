@@ -5,8 +5,14 @@ import '../models/user_model.dart';
 import 'package:http/http.dart' as http;
 
 class UserModel extends Model {
+
+  List<User> _users = [];
   User _authenticatedUser;
   bool _isLoading = false;
+
+  List<User> get users{
+    return List.from(_users);
+  }
 
   User get authenticatedUser{
     return _authenticatedUser;
@@ -16,7 +22,42 @@ class UserModel extends Model {
     return _isLoading;
   }
 
-  Future<Map<String, dynamic>> authenticate(String email, String password, {AuthMode authMode = AuthMode.SignIn}) async {
+  Future<bool> addUserInfo(Map<String, dynamic> userInfo) async {
+    _isLoading = true;
+    notifyListeners();
+
+    try {
+
+      final http.Response response = await http.post(
+          "https://restaurant-app-cb62a-default-rtdb.firebaseio.com/users.json",
+          body: json.encode(userInfo));
+
+      final Map<String, dynamic> responseData = json.decode(response.body);
+
+      User userWithId = User(
+        id: responseData['name'],
+        email: userInfo['email'],
+        // firstName: userInfo['firstName'],
+        // lastName: userInfo['lastName'],
+        // phoneNumber: userInfo['phoneNumber'],
+        // token: userInfo['token'],
+        // userType: userInfo['userType'],
+        username: userInfo['username'],
+      );
+
+      _users.add(userWithId);
+      _isLoading = false;
+      notifyListeners();
+      return Future.value(true);
+    } catch (e) {
+      _isLoading = false;
+      notifyListeners();
+      return Future.value(false);
+    }
+  }
+
+
+  Future<Map<String, dynamic>> authenticate(String email, String password,{AuthMode authMode = AuthMode.SignIn, Map<String, dynamic> userInfo}) async {
     
     _isLoading = true;
     notifyListeners();
@@ -26,6 +67,7 @@ class UserModel extends Model {
       "password": password,
       "returnSecureToken": true,
     };
+
     String message;
     bool hasError = false;
 
@@ -37,6 +79,7 @@ class UserModel extends Model {
           body: json.encode(authData),
           headers: {'Content-Type': 'application/json'},
         );
+         addUserInfo(userInfo);
       }else if(authMode == AuthMode.SignIn){
         response = await http.post(
           "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCJMifZBzjK32fKohdlON-GdlruDRo3LuM",

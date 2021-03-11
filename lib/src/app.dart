@@ -16,11 +16,11 @@ class App extends StatelessWidget {
         title: "Food Delivery App",
         theme: ThemeData(primaryColor: Colors.blueAccent),
         debugShowCheckedModeBanner: false,
-        home: MainScreen(model: mainModel),
-        // home: AddFoodItem(),
+        // home: MainScreen(model: mainModel),
+
         routes: {
           "/" : (BuildContext context) => SignInPage(),
-          "/mainscreen" : (BuildContext context) => MainScreen(),
+          "/mainscreen" : (BuildContext context) => MainScreen(model: mainModel,),
         },
       ),
     );
