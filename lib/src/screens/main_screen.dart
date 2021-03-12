@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_app/src/admin/pages/add_food_item.dart';
+import 'package:restaurant_app/src/pages/about_us.dart';
 import '../scoped-model/main_model.dart';
 
 //Pages
@@ -74,7 +75,20 @@ class _MainScreenState extends State<MainScreen> {
         ),
         drawer: Drawer(
           child: Column(
+            // crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
+              SizedBox(height: 20,),
+              Column(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(30.0),
+                    child: Image.asset('assets/images/restaurant.jpeg'),
+                  ),
+                  SizedBox(height: 10,),
+                  Text("RESTAURANT",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                ],
+              ),
+              SizedBox(height: 20,),
               ListTile(
                 onTap: () {
                   Navigator.of(context).pop();
@@ -88,6 +102,20 @@ class _MainScreenState extends State<MainScreen> {
                   style: TextStyle(fontSize: 16.0),
                 ),
               ),
+              SizedBox(height: 20,),
+              ListTile(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (BuildContext context) => AboutUsPage(),
+                  ));
+                },
+                leading: Icon(Icons.info_rounded),
+                title: Text(
+                  "About Us",
+                  style: TextStyle(fontSize: 16.0),
+                ),
+              ),
+              SizedBox(height: 20,),
             ],
           ),
         ),

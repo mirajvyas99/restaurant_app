@@ -33,6 +33,7 @@ class _PaymentPageState extends State<PaymentPage> {
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(width: 1.0, color: Colors.black),
                 ),
+                child: Text("UPI"),
               ),
               SizedBox(height: 20,),
               Container(

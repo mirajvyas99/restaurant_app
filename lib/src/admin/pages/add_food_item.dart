@@ -1,9 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import '../../models/food_model.dart';
 import '../../scoped-model/main_model.dart';
 import '../../widgets/button.dart';
 import 'package:scoped_model/scoped_model.dart';
 import '../../widgets/show_dialog.dart';
+import 'package:image_picker/image_picker.dart';
 
 class AddFoodItem extends StatefulWidget {
   final Food food;
@@ -22,6 +25,16 @@ class _AddFoodItemState extends State<AddFoodItem> {
 
   GlobalKey<FormState> _foodItemFormKey = GlobalKey();
   GlobalKey<ScaffoldState> _scaffoldStateKey = GlobalKey();
+
+  File _image;
+  final picker = ImagePicker();
+
+  Future getImage() async{
+    final image = await picker.getImage(source: ImageSource.camera);
+    setState(() {
+      _image = File(image.path);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,9 +84,15 @@ class _AddFoodItemState extends State<AddFoodItem> {
                       decoration: BoxDecoration(
                         // color: Colors.red,
                         borderRadius: BorderRadius.circular(10.0),
-                        image: DecorationImage(
-                          image: AssetImage("assets/images/noimage.png"),
-                        ),
+                        // image: DecorationImage(
+                        //   image: AssetImage("assets/images/noimage.png"),
+                        // ),
+                      ),
+                      child: GestureDetector(
+                        child: _image != null ? Image.file(_image) : Image(image: AssetImage("assets/images/noimage.png")),
+                        onTap: (){
+                          getImage();
+                        },
                       ),
                     ),
                     _buildTextFormField("Food Title"),

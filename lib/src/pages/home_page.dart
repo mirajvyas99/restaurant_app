@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../scoped-model/main_model.dart';
 import 'package:scoped_model/scoped_model.dart';
 import '../widgets/bought_foods.dart';
-import '../widgets/bought_foods.dart';
 import '../widgets/food_category.dart';
 import '../widgets/home_top_info.dart';
 import '../widgets/search_field.dart';

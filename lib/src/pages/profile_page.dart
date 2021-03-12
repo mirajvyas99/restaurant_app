@@ -42,8 +42,8 @@ class _ProfilePageState extends State<ProfilePage> {
                         height: 120.0,
                         decoration: BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage("assets/images/breakfast.jpeg"),
-                                fit: BoxFit.cover),
+                                image: AssetImage("assets/images/userlogo.jpeg"),
+                                fit: BoxFit.contain),
                             color: Colors.red,
                             borderRadius: BorderRadius.circular(60.0),
                             boxShadow: [
@@ -62,102 +62,35 @@ class _ProfilePageState extends State<ProfilePage> {
                         children: [
                           Text(
                             "${userInfo.username}",
-                            style: TextStyle(fontSize: 16.0),
+                            style: TextStyle(fontSize: 25.0),
                           ),
                           SizedBox(
                             height: 10.0,
                           ),
                           Text(
                             "${userInfo.email}",
-                            style: TextStyle(color: Colors.grey),
+                            style: TextStyle(color: Colors.grey,fontSize: 16.0),
                           ),
                           SizedBox(
                             height: 20.0,
                           ),
-                          Container(
-                            height: 25.0,
-                            width: 60.0,
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.blue),
-                                borderRadius: BorderRadius.circular(20.0)),
-                            child: Center(
-                              child: Text(
-                                "Edit",
-                                style:
-                                TextStyle(color: Colors.blue, fontSize: 16.0),
-                              ),
-                            ),
-                          )
+                          // Container(
+                          //   height: 25.0,
+                          //   width: 60.0,
+                          //   decoration: BoxDecoration(
+                          //       border: Border.all(color: Colors.blue),
+                          //       borderRadius: BorderRadius.circular(20.0)),
+                          //   child: Center(
+                          //     child: Text(
+                          //       "Edit",
+                          //       style:
+                          //       TextStyle(color: Colors.blue, fontSize: 16.0),
+                          //     ),
+                          //   ),
+                          // )
                         ],
                       ),
                     ],
-                  ),
-                  SizedBox(
-                    height: 30.0,
-                  ),
-                  Text(
-                    "Notifications",
-                    style: TextStyle(
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20.0,
-                  ),
-                  Card(
-                    elevation: 3.0,
-                    child: Padding(
-                      padding: EdgeInsets.all(16.0),
-                      child: Column(
-                        children: <Widget>[
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              Text(
-                                "App Notification",
-                                style: TextStyle(
-                                  fontSize: 16.0,
-                                ),
-                              ),
-                              Switch(
-                                value: turnOnNotification,
-                                onChanged: (bool value) {
-                                  // print("The value: $value");
-                                  setState(() {
-                                    turnOnNotification = value;
-                                  });
-                                },
-                              ),
-                            ],
-                          ),
-                          Divider(
-                            height: 10.0,
-                            color: Colors.grey,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              Text(
-                                "Location Tracking",
-                                style: TextStyle(
-                                  fontSize: 16.0,
-                                ),
-                              ),
-                              Switch(
-                                value: turnOnLocation,
-                                onChanged: (bool value) {
-                                  // print("The value: $value");
-                                  setState(() {
-                                    turnOnLocation = value;
-                                  });
-                                },
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
                   ),
                   SizedBox(
                     height: 30.0,
