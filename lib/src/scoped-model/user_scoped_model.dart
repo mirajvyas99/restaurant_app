@@ -216,22 +216,22 @@ class UserModel extends Model {
       notifyListeners();
 
       return{
-        'message': 'Failed to Sign up',
+        'message': 'Failed',
         'hasError': !hasError,
       };
     }
   }
 
-  void autoLogin() async{
-    SharedPreferences prefs =await SharedPreferences.getInstance();
-    String token = prefs.getString("token");
-
-    if(token != null){
-      _authenticatedUser = null;
-      _authenticatedUserInfo = null;
-      notifyListeners();
-    }
-  }
+  // void autoLogin() async{
+  //   SharedPreferences prefs =await SharedPreferences.getInstance();
+  //   String token = prefs.getString("token");
+  //
+  //   if(token != null){
+  //     _authenticatedUser = null;
+  //     _authenticatedUserInfo = null;
+  //     notifyListeners();
+  //   }
+  // }
 
   void logout(){
     _authenticatedUser = null;

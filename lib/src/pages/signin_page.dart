@@ -82,19 +82,6 @@ class _SignInPageState extends State<SignInPage> {
                   style: TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 100.0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: <Widget>[
-                    Text(
-                      'Forgot Password ?',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.blueAccent,
-                          fontSize: 18.0),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 10.0),
                 Card(
                   elevation: 5.0,
                   child: Padding(
