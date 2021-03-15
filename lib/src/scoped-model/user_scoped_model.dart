@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:restaurant_app/src/enums/auth_mode.dart';
 import 'package:restaurant_app/src/models/user_info_model.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import '../models/user_model.dart';
 import 'package:http/http.dart' as http;
 
@@ -39,7 +38,7 @@ class UserModel extends Model {
     notifyListeners();
 
     try {
-      final http.Response response = await http.get("https://restaurant-app-cb62a-default-rtdb.firebaseio.com/users.json");
+      final http.Response response = await http.get("https://restaurant-app-8548a-default-rtdb.firebaseio.com/users.json");
 
       final Map<String, dynamic> fetchedData = json.decode(response.body);
 
@@ -76,7 +75,7 @@ class UserModel extends Model {
     try {
 
       final http.Response response = await http.post(
-          "https://restaurant-app-cb62a-default-rtdb.firebaseio.com/users.json",
+          "https://restaurant-app-8548a-default-rtdb.firebaseio.com/users.json",
           body: json.encode(userInfo));
 
       final Map<String, dynamic> responseData = json.decode(response.body);
@@ -146,20 +145,19 @@ class UserModel extends Model {
       http.Response response;
       if(authMode == AuthMode.SignUp){
          response = await http.post(
-          "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCJMifZBzjK32fKohdlON-GdlruDRo3LuM",
+          "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBiin7t48GDKGnUPOmdrNQtTCqsTwsznJE",
           body: json.encode(authData),
           headers: {'Content-Type': 'application/json'},
         );
       }else if(authMode == AuthMode.SignIn){
         response = await http.post(
-          "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCJMifZBzjK32fKohdlON-GdlruDRo3LuM",
+          "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBiin7t48GDKGnUPOmdrNQtTCqsTwsznJE",
           body: json.encode(authData),
           headers: {'Content-Type': 'application/json'},
         );
       }
       
       Map<String, dynamic> responseBody = json.decode(response.body);
-      SharedPreferences prefs = await SharedPreferences.getInstance();
 
       if(responseBody.containsKey('idToken')){
         _authenticatedUser = User(
@@ -167,29 +165,14 @@ class UserModel extends Model {
         email: responseBody['email'],
         token: responseBody['idToken'],
       );
-
         if(authMode == AuthMode.SignIn){
-
           _authenticatedUserInfo = await getUserInfo(responseBody['localId']);
-
-          prefs.setString('username', _authenticatedUserInfo.username);
-          prefs.setString('email', _authenticatedUserInfo.email);
-          prefs.setString('userType', _authenticatedUserInfo.userType);
-
           message = "Signed In Successfully";
-
         }else if(authMode == AuthMode.SignUp){
-
           userInfo['localId'] = responseBody['localId'];
           addUserInfo(userInfo);
-          prefs.setString('username', userInfo['username']);
-          prefs.setString('email', userInfo['email']);
-          prefs.setString('userType', userInfo['userType']);
           message = "Signed Up Successfully";
         }
-        prefs.setString("token", responseBody["idToken"]);
-        prefs.setString("expiryTime", responseBody["expiresIn"]);
-
       }else{
         hasError = true;
         if(responseBody['error']['message'] == 'EMAIL_EXISTS'){
@@ -221,17 +204,6 @@ class UserModel extends Model {
       };
     }
   }
-
-  // void autoLogin() async{
-  //   SharedPreferences prefs =await SharedPreferences.getInstance();
-  //   String token = prefs.getString("token");
-  //
-  //   if(token != null){
-  //     _authenticatedUser = null;
-  //     _authenticatedUserInfo = null;
-  //     notifyListeners();
-  //   }
-  // }
 
   void logout(){
     _authenticatedUser = null;

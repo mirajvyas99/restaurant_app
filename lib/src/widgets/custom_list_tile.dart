@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:restaurant_app/src/pages/payment_page.dart';
 import 'package:restaurant_app/src/pages/signin_page.dart';
 import 'package:restaurant_app/src/scoped-model/main_model.dart';
+import 'package:restaurant_app/src/utils/preference_helper.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class CustomListTile extends StatelessWidget {
@@ -34,7 +35,8 @@ class CustomListTile extends StatelessWidget {
             ),
             onTap: (){
               if("$text" == "Logout"){
-                Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => SignInPage()));
+                PreferenceHelper.load().whenComplete(() => PreferenceHelper.clear());
+                Navigator.of(context).pushReplacementNamed("/");
                 model.logout();
               }
               if("$text" == "Payment"){

@@ -33,7 +33,7 @@ class FoodModel extends Model {
         "discount": food.discount,
       };
       final http.Response response = await http.post(
-          "https://restaurant-app-cb62a-default-rtdb.firebaseio.com/foods.json",
+          "https://restaurant-app-8548a-default-rtdb.firebaseio.com/foods.json",
           body: json.encode(foodData));
 
       final Map<String, dynamic> responseData = json.decode(response.body);
@@ -66,7 +66,7 @@ class FoodModel extends Model {
 
     try {
       final http.Response response = await http.get(
-          "https://restaurant-app-cb62a-default-rtdb.firebaseio.com/foods.json");
+          "https://restaurant-app-8548a-default-rtdb.firebaseio.com/foods.json");
 
       final Map<String, dynamic> fetchedData = json.decode(response.body);
       // final List<Food> fetchedFoodItems = [];
@@ -106,7 +106,7 @@ class FoodModel extends Model {
     int foodIndex = _foods.indexOf(theFood);
     try {
       await http.put(
-          "https://restaurant-app-cb62a-default-rtdb.firebaseio.com/foods/${foodId}.json",
+          "https://restaurant-app-8548a-default-rtdb.firebaseio.com/foods/${foodId}.json",
           body: json.encode(foodData));
 
       Food updateFoodItem = Food(
@@ -134,7 +134,7 @@ class FoodModel extends Model {
     notifyListeners();
     try {
       final http.Response response = await http.delete(
-          "https://restaurant-app-cb62a-default-rtdb.firebaseio.com/foods/${foodId}.json");
+          "https://restaurant-app-8548a-default-rtdb.firebaseio.com/foods/${foodId}.json");
       //delete item from List of food items
       _foods.removeWhere((Food food) => food.id == foodId);
       _isLoading = false;

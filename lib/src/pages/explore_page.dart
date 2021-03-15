@@ -7,6 +7,7 @@ import '../scoped-model/main_model.dart';
 import 'package:scoped_model/scoped_model.dart';
 import '../widgets/food_item_card.dart';
 import '../widgets/show_dialog.dart';
+import 'food_details_page.dart';
 
 class FavoritePage extends StatefulWidget {
   final MainModel model;
@@ -44,7 +45,14 @@ class _FavoritePageState extends State<FavoritePage> {
                 itemCount: model.foodLength,
                 itemBuilder: (BuildContext lctx, int index) {
                   return GestureDetector(
-                    onTap: () async {
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (BuildContext context) => FoodDetailsPage(
+                          food: model.foods[index],
+                        ),
+                      ));
+                    },
+                    onLongPress: () async {
                       final bool response =
                           await Navigator.of(context).push(MaterialPageRoute(
                               builder: (BuildContext context) => AddFoodItem(

@@ -1,4 +1,6 @@
 import 'package:restaurant_app/src/enums/auth_mode.dart';
+import 'package:restaurant_app/src/screens/main_screen.dart';
+import 'package:restaurant_app/src/utils/preference_helper.dart';
 import 'package:scoped_model/scoped_model.dart';
 import '../scoped-model/main_model.dart';
 import '../widgets/show_dialog.dart';
@@ -93,27 +95,6 @@ class _SignUpPageState extends State<SignUpPage> {
       },
     );
   }
-
-  // Widget _buildConfirmPasswordTextField() {
-  //   return TextFormField(
-  //     decoration: InputDecoration(
-  //       hintText: 'Confirm Password',
-  //       hintStyle: TextStyle(color: Color(0xFFBDC2CB), fontSize: 18.0),
-  //       suffixIcon: IconButton(
-  //         onPressed: () {
-  //           setState(() {
-  //             _toggleConfirmVisibility = !_toggleConfirmVisibility;
-  //           });
-  //         },
-  //         icon: _toggleConfirmVisibility
-  //             ? Icon(Icons.visibility_off)
-  //             : Icon(Icons.visibility),
-  //       ),
-  //     ),
-  //     obscureText: _toggleConfirmVisibility,
-  //     onSaved: (String value){},
-  //   );
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -231,7 +212,7 @@ class _SignUpPageState extends State<SignUpPage> {
       authenticate(_email, _password, authMode: AuthMode.SignUp, userInfo: userInfo).then((final response){
         Navigator.of(context).pop();
         if(!response['hasError']){
-          Navigator.of(context).pop();
+          PreferenceHelper.load().whenComplete(() => PreferenceHelper.setLoggedIn(true));
           Navigator.of(context).pushReplacementNamed("/mainscreen");
         }else{
           Navigator.of(context).pop();

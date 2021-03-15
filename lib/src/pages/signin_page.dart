@@ -1,4 +1,5 @@
 import 'package:restaurant_app/src/scoped-model/main_model.dart';
+import 'package:restaurant_app/src/utils/preference_helper.dart';
 import 'package:restaurant_app/src/widgets/button.dart';
 import 'package:restaurant_app/src/widgets/show_dialog.dart';
 import 'package:scoped_model/scoped_model.dart';
@@ -12,7 +13,9 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
+
   bool _toggleVisibility = true;
+  bool _isSignedIn = false;
 
   GlobalKey<FormState> _formKey = GlobalKey();
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
@@ -153,6 +156,7 @@ class _SignInPageState extends State<SignInPage> {
 
       authenticate(_email,_password).then((final response){
         if(!response['hasError']){
+          PreferenceHelper.load().whenComplete(() => PreferenceHelper.setLoggedIn(true));
           Navigator.of(context).pop();
           Navigator.of(context).pushReplacementNamed("/mainscreen");
         }else{

@@ -11,7 +11,7 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  bool turnOnNotification = false;
+
   bool turnOnLocation = false;
 
   @override
