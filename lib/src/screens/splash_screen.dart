@@ -33,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
   @override
   Widget build(BuildContext context) {
-    return ScopedModel(
+    return ScopedModel<MainModel>(
       model: mainModel,
       child: Scaffold(
         backgroundColor: Colors.white,
