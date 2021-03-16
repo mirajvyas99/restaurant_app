@@ -30,8 +30,9 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   void initState() {
-    
-    widget.model.fetchAll();
+    if(widget.model!=null){
+      widget.model.fetchAll();
+    }
 
     homePage = HomePage();
     orderPage = OrderPage();
