@@ -176,6 +176,7 @@ class _SignUpPageState extends State<SignUpPage> {
       builder: (BuildContext sctx, Widget child, MainModel model) {
         return GestureDetector(
           onTap: () {
+            showLoadingIndicator(context, "Signing up...");
             onSubmit(model.authenticate);
           },
           child: Container(
