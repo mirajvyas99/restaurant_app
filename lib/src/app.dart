@@ -17,11 +17,10 @@ class App extends StatelessWidget {
         title: "Food Delivery App",
         theme: ThemeData(primaryColor: Colors.blueAccent),
         debugShowCheckedModeBanner: false,
-        // home: MainScreen(model: mainModel),
 
         initialRoute: "/",
         routes: {
-          "/" : (BuildContext context) => SplashScreen(),
+          "/" : (BuildContext context) => SplashScreen(mainModel: mainModel),
           "/mainscreen" : (BuildContext context) => MainScreen(model: mainModel,),
         },
       ),

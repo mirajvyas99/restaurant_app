@@ -6,12 +6,14 @@ import 'package:restaurant_app/src/utils/preference_helper.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class SplashScreen extends StatefulWidget {
+  final MainModel mainModel;
+  SplashScreen({this.mainModel});
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  final MainModel mainModel = MainModel();
+
   @override
   void initState() {
     Future.delayed(Duration(seconds: 3),(){
@@ -19,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
         print(PreferenceHelper.getLoggedIn().toString());
         if(PreferenceHelper.getLoggedIn() == true) {
           Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => MainScreen(model: mainModel)
+              builder: (context) => MainScreen(model: this.widget.mainModel)
           ));
         }else{
           Navigator.of(context).pushReplacement(MaterialPageRoute(
@@ -34,7 +36,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return ScopedModel<MainModel>(
-      model: mainModel,
+      model: widget.mainModel,
       child: Scaffold(
         backgroundColor: Colors.white,
         body: Center(

@@ -156,7 +156,11 @@ class _SignInPageState extends State<SignInPage> {
 
       authenticate(_email,_password).then((final response){
         if(!response['hasError']){
-          PreferenceHelper.load().whenComplete(() => PreferenceHelper.setLoggedIn(true));
+          PreferenceHelper.load().whenComplete((){
+            PreferenceHelper.setLoggedIn(true);
+            PreferenceHelper.setId(response['data'].id);
+            PreferenceHelper.setEmail(_email);
+          });
           Navigator.of(context).pop();
           Navigator.of(context).pushReplacementNamed("/mainscreen");
         }else{

@@ -138,6 +138,7 @@ class UserModel extends Model {
       "returnSecureToken": true,
     };
 
+    String id;
     String message;
     bool hasError = false;
 
@@ -190,6 +191,7 @@ class UserModel extends Model {
       _isLoading = false;
       notifyListeners();
       return {
+        'data':_authenticatedUser,
         'message': message,
         'hasError': hasError,
       };

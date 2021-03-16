@@ -210,9 +210,12 @@ class _SignUpPageState extends State<SignUpPage> {
       };
 
       authenticate(_email, _password, authMode: AuthMode.SignUp, userInfo: userInfo).then((final response){
-        Navigator.of(context).pop();
         if(!response['hasError']){
-          PreferenceHelper.load().whenComplete(() => PreferenceHelper.setLoggedIn(true));
+          PreferenceHelper.load().whenComplete(() {
+            PreferenceHelper.setLoggedIn(true);
+            PreferenceHelper.setId(response['data'].id);
+            PreferenceHelper.setEmail(_email);
+          });
           Navigator.of(context).pushReplacementNamed("/mainscreen");
         }else{
           Navigator.of(context).pop();
