@@ -22,7 +22,6 @@ class FoodCategory extends StatelessWidget {
             child: FoodCard(
               categoryName: _categories[index].categoryName,
               imagePath: _categories[index].imagePath,
-              // numberOfItems: _categories[index].numberOfItems,
             ),
             onTap: (){},
           );

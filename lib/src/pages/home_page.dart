@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:restaurant_app/src/models/category_model.dart';
+import 'package:restaurant_app/src/scoped-model/category_model.dart';
 import '../scoped-model/main_model.dart';
 import 'package:scoped_model/scoped_model.dart';
 import '../widgets/bought_foods.dart';

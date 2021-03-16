@@ -3,17 +3,16 @@ import 'package:flutter/material.dart';
 class FoodCard extends StatelessWidget {
   final String categoryName;
   final String imagePath;
-  final int numberOfItems;
 
-  FoodCard({this.categoryName, this.imagePath, this.numberOfItems});
+  FoodCard({this.categoryName, this.imagePath});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(right: 15),
       child: Card(
-        // color: Colors.white,
-        elevation: 5.0,
+        color: Colors.white,
+        elevation: 10.0,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Row(
@@ -37,10 +36,6 @@ class FoodCard extends StatelessWidget {
                       // color: Colors.black,
                     ),
                   ),
-                  // Text(
-                  //   "$numberOfItems Items",
-                  //   // style: TextStyle(color: Colors.black),
-                  // ),
                 ],
               )
             ],
