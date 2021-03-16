@@ -18,10 +18,13 @@ class FoodCategory extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemCount: _categories.length,
         itemBuilder: (BuildContext context, int index) {
-          return FoodCard(
-            categoryName: _categories[index].categoryName,
-            imagePath: _categories[index].imagePath,
-            numberOfItems: _categories[index].numberOfItems,
+          return GestureDetector(
+            child: FoodCard(
+              categoryName: _categories[index].categoryName,
+              imagePath: _categories[index].imagePath,
+              // numberOfItems: _categories[index].numberOfItems,
+            ),
+            onTap: (){},
           );
         },
       ),

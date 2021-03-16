@@ -37,10 +37,10 @@ class FoodCard extends StatelessWidget {
                       // color: Colors.black,
                     ),
                   ),
-                  Text(
-                    "$numberOfItems Items",
-                    // style: TextStyle(color: Colors.black),
-                  ),
+                  // Text(
+                  //   "$numberOfItems Items",
+                  //   // style: TextStyle(color: Colors.black),
+                  // ),
                 ],
               )
             ],

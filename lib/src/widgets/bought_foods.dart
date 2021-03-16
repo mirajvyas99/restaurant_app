@@ -95,12 +95,12 @@ class _BoughtFoodsState extends State<BoughtFoods> {
                         SizedBox(
                           width: 20.0,
                         ),
-                        Text(
-                          "(" + widget.ratings.toString() + " Reviews)",
-                          style: TextStyle(
-                            color: Colors.grey,
-                          ),
-                        ),
+                        // Text(
+                        //   "(" + widget.ratings.toString() + " Reviews)",
+                        //   style: TextStyle(
+                        //     color: Colors.grey,
+                        //   ),
+                        // ),
                       ],
                     ),
                   ],
@@ -108,14 +108,14 @@ class _BoughtFoodsState extends State<BoughtFoods> {
                 Column(
                   children: <Widget>[
                     Text(
-                      widget.price.toString(),
+                      "₹ ${widget.price.toString()}",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.orangeAccent,
                       ),
                     ),
                     Text(
-                      "Min Order",
+                      "Per Item",
                       style: TextStyle(color: Colors.grey),
                     ),
                   ],

@@ -2,20 +2,40 @@ import 'package:flutter/material.dart';
 import '../widgets/button.dart';
 import '../models/food_model.dart';
 
-class FoodDetailsPage extends StatelessWidget {
+class FoodDetailsPage extends StatefulWidget {
   final Food food;
 
   FoodDetailsPage({this.food});
 
+  @override
+  _FoodDetailsPageState createState() => _FoodDetailsPageState();
+}
+
+class _FoodDetailsPageState extends State<FoodDetailsPage> {
+  int _counter = 1;
+
   var _mediumSpace = SizedBox(
     height: 20.0,
   );
+
   var _smallSpace = SizedBox(
     height: 10.0,
   );
+
   var _largeSpace = SizedBox(
     height: 50.0,
   );
+
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
+  void _decrementCounter() {
+    setState(() {
+      _counter--;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -49,11 +69,11 @@ class FoodDetailsPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text(
-                    food.name,
+                    widget.food.name,
                     style: TextStyle(color: Colors.black, fontSize: 16.0),
                   ),
                   Text(
-                    "₹ ${food.price}",
+                    "₹ ${widget.food.price}",
                     style: TextStyle(
                         color: Theme.of(context).primaryColor, fontSize: 16.0),
                   ),
@@ -69,7 +89,7 @@ class FoodDetailsPage extends StatelessWidget {
               ),
               _smallSpace,
               Text(
-                "${food.description}",
+                "${widget.food.description}",
                 textAlign: TextAlign.justify,
               ),
               _mediumSpace,
@@ -77,22 +97,22 @@ class FoodDetailsPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   IconButton(
-                    icon: Icon(Icons.add_circle),
-                    onPressed: () {},
+                    icon: Icon(Icons.remove_circle),
+                    onPressed: _decrementCounter,
                   ),
                   SizedBox(
                     width: 15.0,
                   ),
                   Text(
-                    "1",
+                    "$_counter",
                     style: TextStyle(fontSize: 16.0),
                   ),
                   SizedBox(
                     width: 15.0,
                   ),
                   IconButton(
-                    icon: Icon(Icons.remove_circle),
-                    onPressed: () {},
+                    icon: Icon(Icons.add_circle),
+                    onPressed: _incrementCounter,
                   ),
                 ],
               ),

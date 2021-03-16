@@ -64,6 +64,13 @@ class _SignInPageState extends State<SignInPage> {
       onSaved: (String password){
         _password = password;
       },
+      validator: (String password){
+        String errorMessage;
+        if(password.isEmpty){
+          errorMessage = "Email is required";
+        }
+        return errorMessage;
+      },
     );
   }
 

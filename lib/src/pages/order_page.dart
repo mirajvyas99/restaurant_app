@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/order_card.dart';
+import 'checkout_page.dart';
 import 'signin_page.dart';
 
 class OrderPage extends StatefulWidget {
@@ -135,7 +136,7 @@ class _OrderPageState extends State<OrderPage> {
             onTap: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                    builder: (BuildContext context) => SignInPage()),
+                    builder: (BuildContext context) => CheckoutPage()),
               );
             },
             child: Container(
