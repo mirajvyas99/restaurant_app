@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:restaurant_app/src/models/user_info_model.dart';
 import 'package:restaurant_app/src/scoped-model/main_model.dart';
+import 'package:restaurant_app/src/utils/preference_helper.dart';
 import 'package:scoped_model/scoped_model.dart';
 import '../widgets/custom_list_tile.dart';
 
@@ -18,7 +19,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return ScopedModelDescendant(
       builder: (BuildContext context, Widget child, MainModel model){
-        UserInfo userInfo = model.getUserDetails(model.authenticatedUser.id);
+        UserInfo userInfo = model.getUserDetails(PreferenceHelper.getId());
         return Scaffold(
           backgroundColor: Colors.white,
           body: SingleChildScrollView(
