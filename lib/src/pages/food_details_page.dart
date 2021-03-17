@@ -6,9 +6,8 @@ import '../widgets/button.dart';
 import '../models/food_model.dart';
 
 class FoodDetailsPage extends StatefulWidget {
-  final Food food;
-
-  FoodDetailsPage({this.food});
+  final Food food, order;
+  FoodDetailsPage({this.food,this.order});
 
   @override
   _FoodDetailsPageState createState() => _FoodDetailsPageState();
@@ -16,6 +15,10 @@ class FoodDetailsPage extends StatefulWidget {
 
 class _FoodDetailsPageState extends State<FoodDetailsPage> {
   int _counter = 1;
+
+  String title;
+  String price;
+  String discount;
 
   var _mediumSpace = SizedBox(
     height: 20.0,
@@ -120,24 +123,51 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                 ],
               ),
               _largeSpace,
-              _buildAddToCartButton(),
+              Button(btnText: "Add to Cart"),
+              // _buildAddToCartButton(),
             ],
           ),
         ),
       ),
     );
   }
-  Widget _buildAddToCartButton(){
-    return ScopedModelDescendant(
-        builder: (BuildContext sctx, Widget child, MainModel model){
-          return GestureDetector(
-            onTap: (){
-              showLoadingIndicator(context, "Signing in...");
-              // onSubmit(model.authenticate);
-            },
-            child: Button(btnText: "Add to Cart"),
-          );
-        }
-    );
-  }
+  // Widget _buildAddToCartButton(){
+  //   return ScopedModelDescendant(
+  //       builder: (BuildContext sctx, Widget child, MainModel model){
+  //         return GestureDetector(
+  //           onTap: () {
+  //             onSubmit(model.addOrder);
+  //             if (model.isLoading) {
+  //               //show loading progress indicator
+  //               showLoadingIndicator(
+  //                   context, "Adding Food to cart...");
+  //             }
+  //           },
+  //           child: Button(btnText: "Add to Cart"),
+  //         );
+  //       }
+  //   );
+  // }
+  // void onSubmit(Function addOrder) async {
+  //   if (widget.order == null) {
+  //     //i want to add new food item
+  //     final Food order = Food(
+  //       name: title,
+  //       price: double.parse(price),
+  //       discount: double.parse(discount),
+  //     );
+  //     bool value = await addOrder(order);
+  //     if (value) {
+  //       Navigator.of(context).pop();
+  //       SnackBar snackBar = SnackBar(
+  //         content: Text("Item Added to Cart"),
+  //       );
+  //     }else if (!value) {
+  //       Navigator.of(context).pop();
+  //       SnackBar snackBar = SnackBar(
+  //         content: Text("Failed to order"),
+  //       );
+  //     }
+  //   }
+  // }
 }

@@ -88,7 +88,7 @@ class _OrderCardState extends State<OrderCard> {
             ),
             Spacer(),
             GestureDetector(
-              onTap: () {},
+              onTap: () { },
               child: Icon(
                 Icons.cancel,
                 color: Colors.grey,
