@@ -75,51 +75,49 @@ class _MainScreenState extends State<MainScreen> {
           ],
         ),
         drawer: Drawer(
-          child: SingleChildScrollView(
-            child: Column(
-              // crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                SizedBox(height: 20,),
-                Column(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(30.0),
-                      child: Image.asset('assets/images/restaurant.jpeg'),
-                    ),
-                    SizedBox(height: 10,),
-                    Text("RESTAURANT",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-                  ],
-                ),
-                SizedBox(height: 20,),
-                ListTile(
-                  onTap: () {
-                    Navigator.of(context).pop();
-                    Navigator.of(context).push(MaterialPageRoute(
-                      builder: (BuildContext context) => AddFoodItem(),
-                    ));
-                  },
-                  leading: Icon(Icons.fastfood),
-                  title: Text(
-                    "Add Food Item",
-                    style: TextStyle(fontSize: 16.0),
+          child: Column(
+            // crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              SizedBox(height: 20,),
+              Column(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(30.0),
+                    child: Image.asset('assets/images/restaurant.jpeg'),
                   ),
+                  SizedBox(height: 10,),
+                  Text("RESTAURANT",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                ],
+              ),
+              SizedBox(height: 20,),
+              ListTile(
+                onTap: () {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (BuildContext context) => AddFoodItem(),
+                  ));
+                },
+                leading: Icon(Icons.fastfood),
+                title: Text(
+                  "Add Food Item",
+                  style: TextStyle(fontSize: 16.0),
                 ),
-                SizedBox(height: 20,),
-                ListTile(
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                      builder: (BuildContext context) => AboutUsPage(),
-                    ));
-                  },
-                  leading: Icon(Icons.info_rounded),
-                  title: Text(
-                    "About Us",
-                    style: TextStyle(fontSize: 16.0),
-                  ),
+              ),
+              SizedBox(height: 20,),
+              ListTile(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (BuildContext context) => AboutUsPage(),
+                  ));
+                },
+                leading: Icon(Icons.info_rounded),
+                title: Text(
+                  "About Us",
+                  style: TextStyle(fontSize: 16.0),
                 ),
-                SizedBox(height: 20,),
-              ],
-            ),
+              ),
+              SizedBox(height: 20,),
+            ],
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
