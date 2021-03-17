@@ -28,19 +28,20 @@ class _OrderCardState extends State<OrderCard> {
                   horizontal: 10.0,
                 ),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    InkWell(
-                        onTap: () {},
-                        child: Icon(Icons.keyboard_arrow_up,
-                            color: Color(0xFFD3D3D3))),
+                    // InkWell(
+                    //     onTap: () {},
+                    //     child: Icon(Icons.keyboard_arrow_up,
+                    //         color: Color(0xFFD3D3D3))),
                     Text(
                       "0",
                       style: TextStyle(fontSize: 18.0, color: Colors.grey),
                     ),
-                    InkWell(
-                        onTap: () {},
-                        child: Icon(Icons.keyboard_arrow_down,
-                            color: Color(0xFFD3D3D3))),
+                    // InkWell(
+                    //     onTap: () {},
+                    //     child: Icon(Icons.keyboard_arrow_down,
+                    //         color: Color(0xFFD3D3D3))),
                   ],
                 ),
               ),
@@ -83,63 +84,6 @@ class _OrderCardState extends State<OrderCard> {
                       fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 5.0),
-                Container(
-                  height: 25.0,
-                  width: 120.0,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: <Widget>[
-                      Row(
-                        children: <Widget>[
-                          Text("Chicken",
-                              style: TextStyle(
-                                  color: Color(0xFFD3D3D3),
-                                  fontWeight: FontWeight.bold)),
-                          SizedBox(
-                            width: 5.0,
-                          ),
-                          InkWell(
-                            onTap: () {},
-                            child: Text(
-                              "x",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.red,
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 10.0,
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: <Widget>[
-                          Text("Chicken",
-                              style: TextStyle(
-                                  color: Color(0xFFD3D3D3),
-                                  fontWeight: FontWeight.bold)),
-                          SizedBox(
-                            width: 5.0,
-                          ),
-                          InkWell(
-                            onTap: () {},
-                            child: Text(
-                              "x",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.red,
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 10.0,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
               ],
             ),
             Spacer(),

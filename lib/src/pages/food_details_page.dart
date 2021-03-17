@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:restaurant_app/src/scoped-model/main_model.dart';
+import 'package:restaurant_app/src/widgets/show_dialog.dart';
+import 'package:scoped_model/scoped_model.dart';
 import '../widgets/button.dart';
 import '../models/food_model.dart';
 
@@ -117,13 +120,24 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                 ],
               ),
               _largeSpace,
-              Button(
-                btnText: "Add to cart",
-              ),
+              _buildAddToCartButton(),
             ],
           ),
         ),
       ),
+    );
+  }
+  Widget _buildAddToCartButton(){
+    return ScopedModelDescendant(
+        builder: (BuildContext sctx, Widget child, MainModel model){
+          return GestureDetector(
+            onTap: (){
+              showLoadingIndicator(context, "Signing in...");
+              // onSubmit(model.authenticate);
+            },
+            child: Button(btnText: "Add to Cart"),
+          );
+        }
     );
   }
 }
