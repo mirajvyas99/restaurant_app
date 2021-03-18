@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_app/src/scoped-model/main_model.dart';
+import 'package:restaurant_app/src/utils/constants.dart';
 import 'package:restaurant_app/src/widgets/show_dialog.dart';
 import 'package:scoped_model/scoped_model.dart';
 import '../widgets/button.dart';
@@ -37,11 +38,13 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
       _counter++;
     });
   }
+
   void _decrementCounter() {
     setState(() {
       _counter--;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -131,17 +134,25 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
       ),
     );
   }
-  Widget _buildAddToCartButton(){
+
+  Widget _buildAddToCartButton() {
     return ScopedModelDescendant(
-        builder: (BuildContext sctx, Widget child, MainModel model){
-          return GestureDetector(
-            onTap: () {
-              widget.food.quantity = _counter;
-              model.addOrder(widget.food);
-            },
-            child: Button(btnText: "Add to Cart"),
-          );
-        }
-    );
+        builder: (BuildContext sctx, Widget child, MainModel model) {
+      return GestureDetector(
+        onTap: () {
+          widget.food.quantity = _counter;
+          // model.addOrder(widget.food);
+          Constants.orders.add(widget.food);
+        },
+        child: Button(btnText: "Add to Cart"),
+      );
+    });
+
+    /*
+    Cart-
+    Food Name
+    Price
+    Quantity
+    * */
   }
 }

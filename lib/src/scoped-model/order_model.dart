@@ -1,11 +1,14 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:restaurant_app/src/utils/constants.dart';
+
 import '../models/food_model.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:http/http.dart' as http;
 
 class OrderModel extends Model {
   List<Food> _orders = [];
+
   bool _isLoading = false;
 
   bool get isLoading {
@@ -13,11 +16,11 @@ class OrderModel extends Model {
   }
 
   List<Food> get orders {
-    return List.from(_orders);
+    return List.from(Constants.orders);
   }
 
   int get orderLength {
-    return _orders.length;
+    return Constants.orders.length;
   }
 
   Future<bool> addOrder(Food order) async {
@@ -26,20 +29,19 @@ class OrderModel extends Model {
 
     bool isNewItem = true;
 
-    for(int i=0;i<_orders.length;i++) {
-      if(_orders[i].id == order.id){
-        if(order.quantity <= 0){
-          _orders.remove(i);
-        }
-        else {
-          _orders[i].quantity = order.quantity;
+    for (int i = 0; i < Constants.orders.length; i++) {
+      if (Constants.orders[i].id == order.id) {
+        if (order.quantity <= 0) {
+          Constants.orders.remove(i);
+        } else {
+          Constants.orders[i].quantity = order.quantity;
         }
         isNewItem = false;
         break;
       }
     }
-    if(isNewItem){
-      _orders.add(order);
+    if (isNewItem) {
+      Constants.orders.add(order);
     }
 
     try {
@@ -61,7 +63,7 @@ class OrderModel extends Model {
       //   price: order.price,
       // );
       //
-      // _orders.add(orderWithId);
+      // Constants.orders.add(orderWithId);
       _isLoading = false;
       notifyListeners();
       // fetchFoods();
@@ -97,7 +99,7 @@ class OrderModel extends Model {
       //   orderItems.add(orderItem);
       // });
 
-      // _orders = orderItems;
+      // Constants.orders = orderItems;
       _isLoading = false;
       notifyListeners();
       return Future.value(true);
@@ -115,7 +117,7 @@ class OrderModel extends Model {
       final http.Response response = await http.delete(
           "https://restaurant-app-8548a-default-rtdb.firebaseio.com/foods/${orderId}.json");
       //delete item from List of food items
-      _orders.removeWhere((Food order) => order.id == orderId);
+      Constants.orders.removeWhere((Food order) => order.id == orderId);
       _isLoading = false;
       notifyListeners();
       return Future.value(true);
@@ -128,9 +130,9 @@ class OrderModel extends Model {
 
   Food getOrderItemById(String orderId) {
     Food order;
-    for (int i = 0; i < _orders.length; i++) {
-      if (_orders[i].id == orderId) {
-        order = _orders[i];
+    for (int i = 0; i < Constants.orders.length; i++) {
+      if (Constants.orders[i].id == orderId) {
+        order = Constants.orders[i];
         break;
       }
     }
