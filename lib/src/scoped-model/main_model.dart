@@ -4,11 +4,11 @@ import 'category_model.dart';
 import 'user_scoped_model.dart';
 import 'order_model.dart';
 
-class MainModel extends Model with FoodModel, UserModel, CategoryModel, OrderModel {
+class MainModel extends Model with FoodModel, UserModel, OrderModel {
   void fetchAll() {
     fetchFoods();
     fetchUserInfos();
     // fetchCategory();
-    // fetchOrders();
+    fetchOrder();
   }
 }

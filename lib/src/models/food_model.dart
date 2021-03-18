@@ -4,6 +4,7 @@ class Food {
   final String imagePath;
   final String description;
   final String category;
+  int quantity;
   final double price;
   final double discount;
   final double ratings;
@@ -14,6 +15,7 @@ class Food {
     this.imagePath,
     this.description,
     this.category,
+    this.quantity,
     this.price,
     this.discount,
     this.ratings,

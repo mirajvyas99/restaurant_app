@@ -6,8 +6,8 @@ import '../widgets/button.dart';
 import '../models/food_model.dart';
 
 class FoodDetailsPage extends StatefulWidget {
-  final Food food, order;
-  FoodDetailsPage({this.food,this.order});
+  final Food food;
+  FoodDetailsPage({this.food});
 
   @override
   _FoodDetailsPageState createState() => _FoodDetailsPageState();
@@ -123,51 +123,25 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                 ],
               ),
               _largeSpace,
-              Button(btnText: "Add to Cart"),
-              // _buildAddToCartButton(),
+              // Button(btnText: "Add to Cart"),
+              _buildAddToCartButton(),
             ],
           ),
         ),
       ),
     );
   }
-  // Widget _buildAddToCartButton(){
-  //   return ScopedModelDescendant(
-  //       builder: (BuildContext sctx, Widget child, MainModel model){
-  //         return GestureDetector(
-  //           onTap: () {
-  //             onSubmit(model.addOrder);
-  //             if (model.isLoading) {
-  //               //show loading progress indicator
-  //               showLoadingIndicator(
-  //                   context, "Adding Food to cart...");
-  //             }
-  //           },
-  //           child: Button(btnText: "Add to Cart"),
-  //         );
-  //       }
-  //   );
-  // }
-  // void onSubmit(Function addOrder) async {
-  //   if (widget.order == null) {
-  //     //i want to add new food item
-  //     final Food order = Food(
-  //       name: title,
-  //       price: double.parse(price),
-  //       discount: double.parse(discount),
-  //     );
-  //     bool value = await addOrder(order);
-  //     if (value) {
-  //       Navigator.of(context).pop();
-  //       SnackBar snackBar = SnackBar(
-  //         content: Text("Item Added to Cart"),
-  //       );
-  //     }else if (!value) {
-  //       Navigator.of(context).pop();
-  //       SnackBar snackBar = SnackBar(
-  //         content: Text("Failed to order"),
-  //       );
-  //     }
-  //   }
-  // }
+  Widget _buildAddToCartButton(){
+    return ScopedModelDescendant(
+        builder: (BuildContext sctx, Widget child, MainModel model){
+          return GestureDetector(
+            onTap: () {
+              widget.food.quantity = _counter;
+              model.addOrder(widget.food);
+            },
+            child: Button(btnText: "Add to Cart"),
+          );
+        }
+    );
+  }
 }

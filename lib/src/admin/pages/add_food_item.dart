@@ -96,6 +96,7 @@ class _AddFoodItemState extends State<AddFoodItem> {
                       ),
                     ),
                     _buildTextFormField("Food Title"),
+                    // _buildCategoryFormField("Category"),
                     _buildTextFormField("Category"),
                     _buildTextFormField("Description", maxLine: 5),
                     _buildTextFormField("Price"),
@@ -201,7 +202,7 @@ class _AddFoodItemState extends State<AddFoodItem> {
                       ? widget.food.price.toString()
                       : widget.food != null && hint == "Discount"
                           ? widget.food.discount.toString()
-                          : "",
+                            : "",
       decoration: InputDecoration(hintText: "$hint"),
       maxLines: maxLine,
       keyboardType: hint == "Price" || hint == "Discount"
@@ -243,7 +244,35 @@ class _AddFoodItemState extends State<AddFoodItem> {
     );
   }
 
-  Widget _buildCategoryTextFormField() {
-    return TextFormField();
-  }
+  // String dropdownValue;
+  //
+  // Widget _buildCategoryFormField(String hint) {
+  //   return DropdownButtonFormField<String>(
+  //     value: dropdownValue,
+  //     icon: const Icon(Icons.arrow_drop_down_sharp),
+  //     iconSize: 24,
+  //     elevation: 15,
+  //     style: const TextStyle(color: Colors.black),
+  //     onChanged: (value) async {
+  //       setState(() {
+  //         dropdownValue = value;
+  //       });
+  //     },
+  //     hint: Text("$hint"),
+  //     items: <String>['Soups', 'Starters', 'Indian Bread', 'Pizza', 'Burger', 'Coffee Cup', 'Soft Drinks', 'Deserts']
+  //         .map<DropdownMenuItem<String>>((String value) {
+  //       return DropdownMenuItem<String>(
+  //         value: value,
+  //         child: Text(value),
+  //       );
+  //     }).toList(),
+  //     validator: (String value) {
+  //       // String error
+  //       if (value.isEmpty && hint == "Category") {
+  //         return "Category is required";
+  //       }
+  //       // return "";
+  //     },
+  //   );
+  // }
 }
