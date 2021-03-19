@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:restaurant_app/src/utils/constants.dart';
 
 import '../models/food_model.dart';
 import 'package:scoped_model/scoped_model.dart';
@@ -16,11 +15,11 @@ class OrderModel extends Model {
   }
 
   List<Food> get orders {
-    return List.from(Constants.orders);
+    return List.from(_orders);
   }
 
   int get orderLength {
-    return Constants.orders.length;
+    return _orders.length;
   }
 
   Future<bool> addOrder(Food order) async {
@@ -29,19 +28,19 @@ class OrderModel extends Model {
 
     bool isNewItem = true;
 
-    for (int i = 0; i < Constants.orders.length; i++) {
-      if (Constants.orders[i].id == order.id) {
+    for (int i = 0; i <_orders.length; i++) {
+      if (_orders[i].id == order.id) {
         if (order.quantity <= 0) {
-          Constants.orders.remove(i);
+          _orders.remove(i);
         } else {
-          Constants.orders[i].quantity = order.quantity;
+          _orders[i].quantity = order.quantity;
         }
         isNewItem = false;
         break;
       }
     }
     if (isNewItem) {
-      Constants.orders.add(order);
+      _orders.add(order);
     }
 
     try {
@@ -63,7 +62,7 @@ class OrderModel extends Model {
       //   price: order.price,
       // );
       //
-      // Constants.orders.add(orderWithId);
+      // _orders.add(orderWithId);
       _isLoading = false;
       notifyListeners();
       // fetchFoods();
@@ -99,7 +98,7 @@ class OrderModel extends Model {
       //   orderItems.add(orderItem);
       // });
 
-      // Constants.orders = orderItems;
+      // _orders = orderItems;
       _isLoading = false;
       notifyListeners();
       return Future.value(true);
@@ -117,7 +116,7 @@ class OrderModel extends Model {
       final http.Response response = await http.delete(
           "https://restaurant-app-8548a-default-rtdb.firebaseio.com/foods/${orderId}.json");
       //delete item from List of food items
-      Constants.orders.removeWhere((Food order) => order.id == orderId);
+      _orders.removeWhere((Food order) => order.id == orderId);
       _isLoading = false;
       notifyListeners();
       return Future.value(true);
@@ -130,9 +129,9 @@ class OrderModel extends Model {
 
   Food getOrderItemById(String orderId) {
     Food order;
-    for (int i = 0; i < Constants.orders.length; i++) {
-      if (Constants.orders[i].id == orderId) {
-        order = Constants.orders[i];
+    for (int i = 0; i < _orders.length; i++) {
+      if (_orders[i].id == orderId) {
+        order = _orders[i];
         break;
       }
     }

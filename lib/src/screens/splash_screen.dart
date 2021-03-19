@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
-    Future.delayed(Duration(seconds: 3),(){
+    Future.delayed(Duration(seconds: 2),(){
       PreferenceHelper.load().whenComplete((){
         print(PreferenceHelper.getLoggedIn().toString());
         if(PreferenceHelper.getLoggedIn() == true) {

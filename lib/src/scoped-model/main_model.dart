@@ -8,7 +8,5 @@ class MainModel extends Model with FoodModel, UserModel, OrderModel {
   void fetchAll() {
     fetchFoods();
     fetchUserInfos();
-    // fetchCategory();
-    fetchOrder();
   }
 }

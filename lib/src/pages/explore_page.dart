@@ -73,13 +73,31 @@ class _FavoritePageState extends State<FavoritePage> {
                       }
                     },
                     onDoubleTap: () {
-                      //delete food item
-                      showLoadingIndicator(context, "Deleting Food Item...");
-                      model
-                          .deleteFood(model.foods[index].id)
-                          .then((bool response) {
-                        Navigator.of(context).pop();
-                      });
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext dcontext) {
+                          // return object of type Dialog
+                          return AlertDialog(
+                            title: new Text("Delete Food"),
+                            content: new Text("Item will be deleted from the menu"),
+                            actions: <Widget>[
+                              // usually buttons at the bottom of the dialog
+                              new FlatButton(
+                                color: Colors.grey.shade300,
+                                splashColor: Colors.red,
+                                child: new Text("Delete",style: TextStyle(color: Colors.black),),
+                                onPressed: () {
+                                  showLoadingIndicator(context, "Deleting Food Item...");
+                                  model.deleteFood(model.foods[index].id).then((bool response) {
+                                    Navigator.of(context).pop();
+                                    Navigator.of(dcontext).pop();
+                                  });
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      );
                     },
                     child: FoodItemCard(
                       model.foods[index].name,

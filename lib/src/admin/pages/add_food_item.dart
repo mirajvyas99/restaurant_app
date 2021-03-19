@@ -84,9 +84,6 @@ class _AddFoodItemState extends State<AddFoodItem> {
                       decoration: BoxDecoration(
                         // color: Colors.red,
                         borderRadius: BorderRadius.circular(10.0),
-                        // image: DecorationImage(
-                        //   image: AssetImage("assets/images/noimage.png"),
-                        // ),
                       ),
                       child: GestureDetector(
                         child: _image != null ? Image.file(_image) : Image(image: AssetImage("assets/images/noimage.png")),
@@ -96,7 +93,6 @@ class _AddFoodItemState extends State<AddFoodItem> {
                       ),
                     ),
                     _buildTextFormField("Food Title"),
-                    // _buildCategoryFormField("Category"),
                     _buildTextFormField("Category"),
                     _buildTextFormField("Description", maxLine: 5),
                     _buildTextFormField("Price"),
@@ -148,6 +144,7 @@ class _AddFoodItemState extends State<AddFoodItem> {
           "discount": discount != null ? double.parse(discount) : 0.0,
         };
         final bool response = await updateFood(updatedFoodItem, widget.food.id);
+        print(response);
         if (response) {
           Navigator.of(context).pop(); // to remove the alert dialog
           Navigator.of(context).pop(response); //to the previous page

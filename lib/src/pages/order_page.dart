@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:restaurant_app/src/models/food_model.dart';
+import 'package:restaurant_app/src/scoped-model/main_model.dart';
+import 'package:scoped_model/scoped_model.dart';
 import '../widgets/order_card.dart';
 import 'checkout_page.dart';
 
 class OrderPage extends StatefulWidget {
+  final MainModel model;
+  final Food food;
+  OrderPage({this.model,this.food});
   @override
   _OrderPageState createState() => _OrderPageState();
 }
@@ -12,13 +18,17 @@ class _OrderPageState extends State<OrderPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: ListView(
-        padding: EdgeInsets.symmetric(horizontal: 10.0),
-        scrollDirection: Axis.vertical,
-        children: [
-          OrderCard(),
-          OrderCard(),
-        ],
+      body: ScopedModelDescendant(
+        builder: (BuildContext context, Widget child, MainModel model) {
+          return ListView.builder(
+              padding: EdgeInsets.symmetric(horizontal: 10.0),
+              scrollDirection: Axis.vertical,
+              itemCount: model.orderLength,
+              itemBuilder: (BuildContext lctx, int index){
+                return OrderCard(food: model.orders[index]);
+              },
+          );
+        }
       ),
       bottomNavigationBar: _buildTotalContainer(),
     );
