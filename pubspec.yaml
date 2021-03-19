@@ -59,6 +59,7 @@ flutter:
     - assets/images/userlogo.jpeg
     - assets/images/restaurant.jpeg
     - assets/images/ic_launcher.png
+    - assets/images/tablelogo.jpg
 
   # fonts:
   #   - family: Schyler

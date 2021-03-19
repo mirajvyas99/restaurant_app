@@ -42,7 +42,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       height: 120.0,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              image: AssetImage("assets/images/userlogo.jpeg"),
+                              image: AssetImage("assets/images/tablelogo.jpg"),
                               fit: BoxFit.contain),
                           color: Colors.red,
                           borderRadius: BorderRadius.circular(60.0),
