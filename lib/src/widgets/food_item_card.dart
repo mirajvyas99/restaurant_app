@@ -4,9 +4,10 @@ import 'small_button.dart';
 class FoodItemCard extends StatelessWidget {
   final String title;
   final String description;
+  final String imagePath;
   final String price;
 
-  FoodItemCard(this.title, this.description, this.price);
+  FoodItemCard(this.title, this.description,this.imagePath, this.price);
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +36,7 @@ class FoodItemCard extends StatelessWidget {
             margin: EdgeInsets.only(right: 10.0),
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage(
-                    'assets/images/breakfast.jpeg',
-                  ),
+                  image: NetworkImage(imagePath),
                   fit: BoxFit.cover),
               borderRadius: BorderRadius.circular(10.0),
             ),

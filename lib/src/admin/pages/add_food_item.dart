@@ -87,9 +87,6 @@ class _AddFoodItemState extends State<AddFoodItem> {
                       decoration: BoxDecoration(
                         // color: Colors.red,
                         borderRadius: BorderRadius.circular(10.0),
-                        // image: DecorationImage(
-                        //   image: NetworkImage(imagePath),
-                        // ),
                       ),
                       child: GestureDetector(
                         child: _image != null ? Image.file(_image) : Image(image: AssetImage("assets/images/noimage.png")),
@@ -103,16 +100,10 @@ class _AddFoodItemState extends State<AddFoodItem> {
                       color: Colors.blue,
                       child: Icon(Icons.add_to_drive,color: Colors.white,),
                       onPressed: () async{
-
-                        // FirebaseStorage fs = FirebaseStorage.instance;
-                        // String fileName = basename(_image.path);
-                        // Reference reference = FirebaseStorage.instance.ref().child("foods/fileName");
-                        // await reference.putFile(_image);
-
                         FirebaseStorage fs = FirebaseStorage.instance;
                         Reference reference = fs.ref().child("foods/${_image.path}");
                         await reference.putFile(_image);
-
+                        imagePath = (await reference.getDownloadURL()).toString();
                       },
                     ),
                     _buildTextFormField("Food Title"),
@@ -162,6 +153,7 @@ class _AddFoodItemState extends State<AddFoodItem> {
         Map<String, dynamic> updatedFoodItem = {
           "title": title,
           "category": category,
+          "imagePath": imagePath,
           "description": description,
           "price": double.parse(price),
           "discount": discount != null ? double.parse(discount) : 0.0,
@@ -188,6 +180,7 @@ class _AddFoodItemState extends State<AddFoodItem> {
         final Food food = Food(
           name: title,
           category: category,
+          imagePath: imagePath,
           description: description,
           price: double.parse(price),
           discount: double.parse(discount),

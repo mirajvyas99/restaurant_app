@@ -60,7 +60,7 @@ class _FavoritePageState extends State<FavoritePage> {
                           await Navigator.of(context).push(MaterialPageRoute(
                               builder: (BuildContext context) => userInfo.email == "admin@gmail.com"
                                   ? AddFoodItem(food: model.foods[index])
-                                  : null
+                                  :  FoodDetailsPage(food: model.foods[index])
                           ));
                       if (response) {
                         SnackBar snackBar = SnackBar(
@@ -110,6 +110,7 @@ class _FavoritePageState extends State<FavoritePage> {
                     },
                     child: FoodItemCard(
                       model.foods[index].name,
+                      model.foods[index].imagePath,
                       model.foods[index].description,
                       model.foods[index].price.toString(),
                     ),

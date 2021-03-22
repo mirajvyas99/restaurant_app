@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant_app/src/models/user_info_model.dart';
 import 'package:restaurant_app/src/scoped-model/main_model.dart';
-import 'package:restaurant_app/src/widgets/show_dialog.dart';
 import 'package:scoped_model/scoped_model.dart';
 import '../widgets/button.dart';
 import '../models/food_model.dart';
@@ -41,7 +39,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
 
   void _decrementCounter() {
     setState(() {
-      _counter--;
+        _counter--;
     });
   }
 
@@ -68,8 +66,8 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
               Container(
                 height: 200.0,
                 width: MediaQuery.of(context).size.width,
-                child: Image.asset(
-                  "assets/images/lunch.jpeg",
+                child: Image.network(
+                  "${widget.food.imagePath}",
                   fit: BoxFit.cover,
                 ),
               ),
@@ -102,7 +100,6 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                 textAlign: TextAlign.justify,
               ),
               _mediumSpace,
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -114,7 +111,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                     width: 15.0,
                   ),
                   Text(
-                    "$_counter",
+                   "$_counter" ,
                     style: TextStyle(fontSize: 16.0),
                   ),
                   SizedBox(
@@ -152,12 +149,5 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
         child: Button(btnText: "Add to Cart"),
       );
     });
-
-    /*
-    Cart-
-    Food Name
-    Price
-    Quantity
-    * */
   }
 }

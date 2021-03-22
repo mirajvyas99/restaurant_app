@@ -61,7 +61,7 @@ class _OrderCardState extends State<OrderCard> {
                     width: 70.0,
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                            image: AssetImage("assets/images/lunch.jpeg"),
+                            image: NetworkImage("${widget.food.imagePath}"),
                             fit: BoxFit.cover),
                         borderRadius: BorderRadius.circular(35.0),
                         boxShadow: [
