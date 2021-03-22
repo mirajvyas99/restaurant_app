@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:restaurant_app/src/admin/pages/add_food_item.dart';
+import 'package:restaurant_app/src/models/user_info_model.dart';
+import 'package:restaurant_app/src/utils/preference_helper.dart';
 import '../models/food_model.dart';
 import '../scoped-model/food_model.dart';
 import '../scoped-model/main_model.dart';
@@ -24,7 +26,9 @@ class _FavoritePageState extends State<FavoritePage> {
   void initState() {
     super.initState();
     if (widget.model != null) {
-      widget.model.fetchFoods();
+      widget.model.fetchAll();
+      // widget.model.fetchFoods();
+      // widget.model.fetchUserInfos();
     }
   }
 
@@ -35,8 +39,7 @@ class _FavoritePageState extends State<FavoritePage> {
       backgroundColor: Colors.white,
       body: ScopedModelDescendant<MainModel>(
         builder: (BuildContext context, Widget child, MainModel model) {
-          // model.fetchFoods(); //this will fetch and notifyListeners() will be called
-          // List<Food> foods = model.foods;
+          UserInfo userInfo = model.getUserDetails(PreferenceHelper.getId());
           return Container(
             padding: EdgeInsets.symmetric(horizontal: 20.0),
             child: RefreshIndicator(
@@ -55,9 +58,10 @@ class _FavoritePageState extends State<FavoritePage> {
                     onLongPress: () async {
                       final bool response =
                           await Navigator.of(context).push(MaterialPageRoute(
-                              builder: (BuildContext context) => AddFoodItem(
-                                    food: model.foods[index],
-                                  )));
+                              builder: (BuildContext context) => userInfo.email == "admin@gmail.com"
+                                  ? AddFoodItem(food: model.foods[index])
+                                  : null
+                          ));
                       if (response) {
                         SnackBar snackBar = SnackBar(
                           duration: Duration(seconds: 2),
@@ -73,6 +77,7 @@ class _FavoritePageState extends State<FavoritePage> {
                       }
                     },
                     onDoubleTap: () {
+                      userInfo.email == "admin@gmail.com" ?
                       showDialog(
                         context: context,
                         builder: (BuildContext dcontext) {
@@ -97,7 +102,11 @@ class _FavoritePageState extends State<FavoritePage> {
                             ],
                           );
                         },
-                      );
+                      )
+                          :  null;
+                      // Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => FoodDetailsPage(
+                      //   food: model.foods[index],
+                      // )));
                     },
                     child: FoodItemCard(
                       model.foods[index].name,

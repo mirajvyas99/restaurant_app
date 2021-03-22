@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:restaurant_app/src/models/user_info_model.dart';
 import 'package:restaurant_app/src/scoped-model/main_model.dart';
 import 'package:restaurant_app/src/widgets/show_dialog.dart';
 import 'package:scoped_model/scoped_model.dart';
@@ -77,7 +78,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text(
-                    widget.food.name,
+                    "${widget.food.name}",
                     style: TextStyle(color: Colors.black, fontSize: 16.0),
                   ),
                   Text(
@@ -101,11 +102,12 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                 textAlign: TextAlign.justify,
               ),
               _mediumSpace,
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   IconButton(
-                    icon: Icon(Icons.remove_circle),
+                    icon: Icon(Icons.remove_circle,color: Colors.red,),
                     onPressed: _decrementCounter,
                   ),
                   SizedBox(
@@ -119,7 +121,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                     width: 15.0,
                   ),
                   IconButton(
-                    icon: Icon(Icons.add_circle),
+                    icon: Icon(Icons.add_circle,color: Colors.green,),
                     onPressed: _incrementCounter,
                   ),
                 ],
@@ -144,8 +146,8 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
             duration: Duration(seconds:1),
           );
           widget.food.quantity = _counter;
+          print(widget.food.id);
           model.addOrder(widget.food);
-          // Constants.orders.add(widget.food);
         },
         child: Button(btnText: "Add to Cart"),
       );

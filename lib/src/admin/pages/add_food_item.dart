@@ -1,6 +1,7 @@
 import 'dart:io';
-
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+// import 'package:path/path.dart';
 import '../../models/food_model.dart';
 import '../../scoped-model/main_model.dart';
 import '../../widgets/button.dart';
@@ -19,6 +20,7 @@ class AddFoodItem extends StatefulWidget {
 class _AddFoodItemState extends State<AddFoodItem> {
   String title;
   String category;
+  String imagePath;
   String description;
   String price;
   String discount;
@@ -31,6 +33,7 @@ class _AddFoodItemState extends State<AddFoodItem> {
 
   Future getImage() async{
     final image = await picker.getImage(source: ImageSource.camera);
+
     setState(() {
       _image = File(image.path);
     });
@@ -84,6 +87,9 @@ class _AddFoodItemState extends State<AddFoodItem> {
                       decoration: BoxDecoration(
                         // color: Colors.red,
                         borderRadius: BorderRadius.circular(10.0),
+                        // image: DecorationImage(
+                        //   image: NetworkImage(imagePath),
+                        // ),
                       ),
                       child: GestureDetector(
                         child: _image != null ? Image.file(_image) : Image(image: AssetImage("assets/images/noimage.png")),
@@ -92,6 +98,23 @@ class _AddFoodItemState extends State<AddFoodItem> {
                         },
                       ),
                     ),
+                    // RaisedButton(
+                    //   elevation: 3,
+                    //   color: Colors.blue,
+                    //   child: Icon(Icons.add_to_drive,color: Colors.white,),
+                    //   onPressed: () async{
+                    //
+                    //     // FirebaseStorage fs = FirebaseStorage.instance;
+                    //     // String fileName = basename(_image.path);
+                    //     // Reference reference = FirebaseStorage.instance.ref().child("foods/fileName");
+                    //     // await reference.putFile(_image);
+                    //
+                    //     // FirebaseStorage fs = FirebaseStorage.instance;
+                    //     // Reference reference = fs.ref().child("foods/${_image.path}");
+                    //     // await reference.putFile(_image);
+                    //
+                    //   },
+                    // ),
                     _buildTextFormField("Food Title"),
                     _buildTextFormField("Category"),
                     _buildTextFormField("Description", maxLine: 5),

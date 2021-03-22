@@ -55,11 +55,11 @@ flutter:
     - assets/images/volcano.jpg
     - assets/images/paneerbuttermasala.jpg
     - assets/images/qrcode.png
-    - assets/images/userlogo.png
     - assets/images/userlogo.jpeg
     - assets/images/restaurant.jpeg
     - assets/images/ic_launcher.png
     - assets/images/tablelogo.jpg
+    - assets/images/adminlogo.png
 
   # fonts:
   #   - family: Schyler

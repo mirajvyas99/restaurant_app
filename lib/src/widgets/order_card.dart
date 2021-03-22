@@ -28,7 +28,7 @@ class _OrderCardState extends State<OrderCard> {
                       border: Border.all(color: Color(0xFFD3D3D3), width: 2.0),
                       borderRadius: BorderRadius.circular(20.0),
                     ),
-                    width: 45.0,
+                    width: 50.0,
                     height: 70.0,
                     child: Padding(
                       padding: EdgeInsets.symmetric(
@@ -84,7 +84,7 @@ class _OrderCardState extends State<OrderCard> {
                       ),
                       SizedBox(height: 5.0),
                       Text(
-                        "${widget.food.price}",
+                        "₹ ${widget.food.price * widget.food.quantity}",
                         style: TextStyle(
                             fontSize: 16.0,
                             color: Colors.orangeAccent,
@@ -94,11 +94,24 @@ class _OrderCardState extends State<OrderCard> {
                     ],
                   ),
                   Spacer(),
+                  // IconButton(
+                  //   icon: Icon(Icons.cancel,color: Colors.red.shade300,),
+                  //   color: Colors.grey,
+                  //   onPressed: (){
+                  //     widget.food.quantity = 0;
+                  //     // print("button - ${widget.food.quantity}");
+                  //     model.addOrder(widget.food);
+                  //   }
+                  // ),
                   GestureDetector(
-                    onTap: () { },
+                    onTap: () {
+                      widget.food.quantity = 0;
+                      // print("button - ${widget.food.quantity}");
+                      model.addOrder(widget.food);
+                    },
                     child: Icon(
                       Icons.cancel,
-                      color: Colors.grey,
+                      color: Colors.red.shade300,
                     ),
                   ),
                 ],

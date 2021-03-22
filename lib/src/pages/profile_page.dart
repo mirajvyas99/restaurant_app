@@ -41,10 +41,10 @@ class _ProfilePageState extends State<ProfilePage> {
                       width: 120.0,
                       height: 120.0,
                       decoration: BoxDecoration(
+                        color: Colors.white,
                           image: DecorationImage(
-                              image: AssetImage("assets/images/tablelogo.jpg"),
+                              image: userInfo.email == "admin@gmail.com" ? AssetImage("assets/images/adminlogo.png") : AssetImage("assets/images/tablelogo.jpg"),
                               fit: BoxFit.contain),
-                          color: Colors.red,
                           borderRadius: BorderRadius.circular(60.0),
                           boxShadow: [
                             BoxShadow(
@@ -74,20 +74,6 @@ class _ProfilePageState extends State<ProfilePage> {
                         SizedBox(
                           height: 20.0,
                         ),
-                        // Container(
-                        //   height: 25.0,
-                        //   width: 60.0,
-                        //   decoration: BoxDecoration(
-                        //       border: Border.all(color: Colors.blue),
-                        //       borderRadius: BorderRadius.circular(20.0)),
-                        //   child: Center(
-                        //     child: Text(
-                        //       "Edit",
-                        //       style:
-                        //       TextStyle(color: Colors.blue, fontSize: 16.0),
-                        //     ),
-                        //   ),
-                        // )
                       ],
                     ),
                   ],
