@@ -98,23 +98,23 @@ class _AddFoodItemState extends State<AddFoodItem> {
                         },
                       ),
                     ),
-                    // RaisedButton(
-                    //   elevation: 3,
-                    //   color: Colors.blue,
-                    //   child: Icon(Icons.add_to_drive,color: Colors.white,),
-                    //   onPressed: () async{
-                    //
-                    //     // FirebaseStorage fs = FirebaseStorage.instance;
-                    //     // String fileName = basename(_image.path);
-                    //     // Reference reference = FirebaseStorage.instance.ref().child("foods/fileName");
-                    //     // await reference.putFile(_image);
-                    //
-                    //     // FirebaseStorage fs = FirebaseStorage.instance;
-                    //     // Reference reference = fs.ref().child("foods/${_image.path}");
-                    //     // await reference.putFile(_image);
-                    //
-                    //   },
-                    // ),
+                    RaisedButton(
+                      elevation: 3,
+                      color: Colors.blue,
+                      child: Icon(Icons.add_to_drive,color: Colors.white,),
+                      onPressed: () async{
+
+                        // FirebaseStorage fs = FirebaseStorage.instance;
+                        // String fileName = basename(_image.path);
+                        // Reference reference = FirebaseStorage.instance.ref().child("foods/fileName");
+                        // await reference.putFile(_image);
+
+                        FirebaseStorage fs = FirebaseStorage.instance;
+                        Reference reference = fs.ref().child("foods/${_image.path}");
+                        await reference.putFile(_image);
+
+                      },
+                    ),
                     _buildTextFormField("Food Title"),
                     _buildTextFormField("Category"),
                     _buildTextFormField("Description", maxLine: 5),
