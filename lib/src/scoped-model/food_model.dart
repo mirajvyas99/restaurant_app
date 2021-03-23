@@ -27,8 +27,8 @@ class FoodModel extends Model {
     try {
       final Map<String, dynamic> foodData = {
         "title": food.name,
-        "description": food.description,
         "imagePath": food.imagePath,
+        "description": food.description,
         "category": food.category,
         "price": food.price,
         "discount": food.discount,
@@ -42,8 +42,8 @@ class FoodModel extends Model {
       Food foodWithId = Food(
         id: responseData["name"],
         name: food.name,
-        description: food.description,
         imagePath: food.imagePath,
+        description: food.description,
         category: food.category,
         discount: food.discount,
         price: food.price,
@@ -115,8 +115,8 @@ class FoodModel extends Model {
       Food updateFoodItem = Food(
         id: foodId,
         name: foodData["title"],
-        category: foodData['category'],
         imagePath: foodData['imagePath'],
+        category: foodData['category'],
         discount: foodData['discount'],
         price: foodData['price'],
         description: foodData['description'],

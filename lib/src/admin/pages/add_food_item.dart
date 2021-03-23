@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-// import 'package:path/path.dart';
 import '../../models/food_model.dart';
 import '../../scoped-model/main_model.dart';
 import '../../widgets/button.dart';
@@ -101,9 +100,10 @@ class _AddFoodItemState extends State<AddFoodItem> {
                       child: Icon(Icons.add_to_drive,color: Colors.white,),
                       onPressed: () async{
                         FirebaseStorage fs = FirebaseStorage.instance;
-                        Reference reference = fs.ref().child("foods/${_image.path}");
+                        Reference reference = fs.ref().child("foods/${_image.path.split('/').last}");
                         await reference.putFile(_image);
                         imagePath = (await reference.getDownloadURL()).toString();
+                        print(imagePath);
                       },
                     ),
                     _buildTextFormField("Food Title"),

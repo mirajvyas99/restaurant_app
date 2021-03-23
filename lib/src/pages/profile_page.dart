@@ -17,9 +17,9 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return ScopedModelDescendant(
-        builder: (BuildContext context, Widget child, MainModel model) {
-      UserInfo userInfo = model.getUserDetails(PreferenceHelper.getId());
-      return Scaffold(
+      builder: (BuildContext context, Widget child, MainModel model) {
+        UserInfo userInfo = model.getUserDetails(PreferenceHelper.getId());
+        return Scaffold(
         backgroundColor: Colors.white,
         body: SingleChildScrollView(
           child: Container(
@@ -44,7 +44,8 @@ class _ProfilePageState extends State<ProfilePage> {
                         color: Colors.white,
                           image: DecorationImage(
                               image: userInfo.email == "admin@gmail.com" ? AssetImage("assets/images/adminlogo.png") : AssetImage("assets/images/tablelogo.jpg"),
-                              fit: BoxFit.contain),
+                              fit: BoxFit.contain
+                          ),
                           borderRadius: BorderRadius.circular(60.0),
                           boxShadow: [
                             BoxShadow(
@@ -52,7 +53,8 @@ class _ProfilePageState extends State<ProfilePage> {
                               offset: Offset(0, 4.0),
                               color: Colors.black38,
                             )
-                          ]),
+                          ]
+                      ),
                     ),
                     SizedBox(
                       width: 30.0,
@@ -125,7 +127,8 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
           ),
         ),
-      );
-    });
+        );
+      }
+    );
   }
 }

@@ -15,9 +15,10 @@ class FoodDetailsPage extends StatefulWidget {
 class _FoodDetailsPageState extends State<FoodDetailsPage> {
   int _counter = 1;
 
-  String title;
-  String price;
-  String discount;
+  // String title;
+  // String price;
+  // String imagePath;
+  // String discount;
 
   var _mediumSpace = SizedBox(
     height: 20.0,

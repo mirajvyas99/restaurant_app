@@ -33,7 +33,7 @@ class _BoughtFoodsState extends State<BoughtFoods> {
           Container(
             height: 200.0,
             width: 340.0,
-            child: Image.asset(widget.imagePath, fit: BoxFit.cover),
+            child: Image.network("${widget.imagePath}", fit: BoxFit.cover),
           ),
           Positioned(
             left: 0.0,

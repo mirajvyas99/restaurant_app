@@ -36,7 +36,7 @@ class FoodItemCard extends StatelessWidget {
             margin: EdgeInsets.only(right: 10.0),
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: NetworkImage(imagePath),
+                  image: NetworkImage("$imagePath"),
                   fit: BoxFit.cover),
               borderRadius: BorderRadius.circular(10.0),
             ),
