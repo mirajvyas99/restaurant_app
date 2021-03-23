@@ -15,10 +15,6 @@ class FoodDetailsPage extends StatefulWidget {
 class _FoodDetailsPageState extends State<FoodDetailsPage> {
   int _counter = 1;
 
-  // String title;
-  // String price;
-  // String imagePath;
-  // String discount;
 
   var _mediumSpace = SizedBox(
     height: 20.0,
@@ -40,7 +36,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
 
   void _decrementCounter() {
     setState(() {
-        _counter--;
+      _counter--;
     });
   }
 
@@ -78,7 +74,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                 children: <Widget>[
                   Text(
                     "${widget.food.name}",
-                    style: TextStyle(color: Colors.black, fontSize: 16.0),
+                    style: TextStyle(color: Colors.black, fontSize: 20.0,fontWeight: FontWeight.bold,),
                   ),
                   Text(
                     "₹ ${widget.food.price}",
@@ -91,13 +87,15 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
               Text(
                 "Description",
                 style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 16.0,
+                  color: Colors.grey.shade700,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
               _smallSpace,
               Text(
                 "${widget.food.description}",
+                style: TextStyle(color: Colors.black, fontSize: 16.0),
                 textAlign: TextAlign.justify,
               ),
               _mediumSpace,
