@@ -66,7 +66,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
             children: <Widget>[
               Container(
                 height: 200.0,
-                width: MediaQuery.of(context).size.width,
+                width: 400.0,
                 child: Image.network(
                   "${widget.food.imagePath}",
                   fit: BoxFit.cover,

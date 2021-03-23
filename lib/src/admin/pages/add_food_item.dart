@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_image_compress/flutter_image_compress.dart';
 import '../../models/food_model.dart';
 import '../../scoped-model/main_model.dart';
 import '../../widgets/button.dart';
@@ -33,9 +34,20 @@ class _AddFoodItemState extends State<AddFoodItem> {
   Future getImage() async{
     final image = await picker.getImage(source: ImageSource.camera);
 
+    // final compressedImage = await FlutterImageCompress.compressAndGetFile(image.path, image.path, quality: 30);
+
     setState(() {
+      // _image = compressedImage;
       _image = File(image.path);
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    if(widget.food!=null){
+      imagePath = widget.food.imagePath;
+    }
   }
 
   @override
@@ -88,24 +100,29 @@ class _AddFoodItemState extends State<AddFoodItem> {
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                       child: GestureDetector(
-                        child: _image != null ? Image.file(_image) : Image(image: AssetImage("assets/images/noimage.png")),
+                        child: _image != null
+                            ? Image.file(_image)
+                            : widget.food != null
+                                ? Image.network("${widget.food.imagePath}")
+                                : Image.asset("assets/images/noimage.png"),
                         onTap: (){
                           getImage();
                         },
                       ),
                     ),
-                    RaisedButton(
-                      elevation: 3,
-                      color: Colors.blue,
-                      child: Icon(Icons.add_to_drive,color: Colors.white,),
-                      onPressed: () async{
-                        FirebaseStorage fs = FirebaseStorage.instance;
-                        Reference reference = fs.ref().child("foods/${_image.path.split('/').last}");
-                        await reference.putFile(_image);
-                        imagePath = (await reference.getDownloadURL()).toString();
-                        print(imagePath);
-                      },
-                    ),
+                    // RaisedButton(
+                    //   elevation: 3,
+                    //   color: Colors.blue,
+                    //   child: Icon(Icons.add_to_drive,color: Colors.white,),
+                    //   onPressed: () async{
+                    //     FirebaseStorage fs = FirebaseStorage.instance;
+                    //     Reference reference = fs.ref().child("foods/${_image.path.split('/').last}"); //gets the original filename from the whole path & set as filename in storage
+                    //     // Reference reference = fs.ref().child("foods/${widget.food.name}"); //sets the filename as the name of food
+                    //     await reference.putFile(_image);
+                    //     imagePath = (await reference.getDownloadURL()).toString();
+                    //     // print(imagePath);
+                    //   },
+                    // ),
                     _buildTextFormField("Food Title"),
                     _buildTextFormField("Category"),
                     _buildTextFormField("Description", maxLine: 5),
@@ -147,6 +164,15 @@ class _AddFoodItemState extends State<AddFoodItem> {
   void onSubmit(Function addFood, Function updateFood) async {
     if (_foodItemFormKey.currentState.validate()) {
       _foodItemFormKey.currentState.save();
+
+      if(_image!=null){
+        FirebaseStorage fs = FirebaseStorage.instance;
+        Reference reference = fs.ref().child("foods/${_image.path.split('/').last}"); //gets the original filename from the whole path & set as filename in storage
+        // Reference reference = fs.ref().child("foods/${widget.food.name}"); //sets the filename as the name of food
+        await reference.putFile(_image);
+        imagePath = (await reference.getDownloadURL()).toString();
+        // print(imagePath);
+      }
 
       if (widget.food != null) {
         //i want to update the food item

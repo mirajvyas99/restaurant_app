@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:firebase_storage/firebase_storage.dart';
+
 import '../models/food_model.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:http/http.dart' as http;
@@ -143,6 +145,9 @@ class FoodModel extends Model {
 
       //delete item from List of food items
       _foods.removeWhere((Food food) => food.id == foodId);
+
+      FirebaseStorage fs = FirebaseStorage.instance;
+
 
       _isLoading = false;
       notifyListeners();
