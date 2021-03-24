@@ -139,15 +139,29 @@ class FoodModel extends Model {
   Future<bool> deleteFood(String foodId) async {
     _isLoading = true;
     notifyListeners();
+    String imageName;
     try {
       final http.Response response = await http.delete(
           "https://restaurant-app-8548a-default-rtdb.firebaseio.com/foods/${foodId}.json");
 
       //delete item from List of food items
-      _foods.removeWhere((Food food) => food.id == foodId);
+      // _foods.removeWhere((Food food) => food.id == foodId);
 
-      FirebaseStorage fs = FirebaseStorage.instance;
+      //delete item from List of food items
+      for (int i = 0; i < _foods.length; i++) {
+        if (_foods[i].id == foodId) {
+          imageName = _foods[i].imagePath.split('/').last;
+          imageName = imageName.replaceAll(new RegExp(r'%2F'), '/');
+          imageName = imageName.replaceAll(new RegExp(r'(\?alt).*'), '');
+          print(imageName);
 
+          _foods.removeAt(i);
+        }
+      }
+      //delete same image from storage
+      Reference ref = await FirebaseStorage.instance.ref();
+      print("reference = $imageName");
+      ref.child("$imageName").delete();
 
       _isLoading = false;
       notifyListeners();

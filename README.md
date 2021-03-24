@@ -1,6 +1,8 @@
 # restaurant_app
 
-A new Flutter application.
+Application can be installed in tablets, placed on the tables of Restaurants and Cafes.
+
+Customer are able to see menu, item details, order food, and also pay the bill.
 
 ## Getting Started
 
