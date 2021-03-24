@@ -32,7 +32,7 @@ class _AddFoodItemState extends State<AddFoodItem> {
   final picker = ImagePicker();
 
   Future getImage() async{
-    final image = await picker.getImage(source: ImageSource.camera,imageQuality: 28);
+    final image = await picker.getImage(source: ImageSource.gallery,imageQuality: 28);
     // final compressedImage = await FlutterImageCompress.compressAndGetFile(image.path, image.path, quality: 30);
 
     setState(() {

@@ -56,9 +56,11 @@ class FoodItemCard extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 15.0),
-              Container(
-                width: 200.0,
-                child: Text('$description'),
+              Flexible(
+                child: Container(
+                  width: 200.0,
+                  child: Text('$description'),
+                ),
               ),
               SizedBox(height: 15.0),
               Container(
