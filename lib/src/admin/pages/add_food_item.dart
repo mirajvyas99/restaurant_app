@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_image_compress/flutter_image_compress.dart';
+// import 'package:flutter_image_compress/flutter_image_compress.dart';
 import '../../models/food_model.dart';
 import '../../scoped-model/main_model.dart';
 import '../../widgets/button.dart';
@@ -32,14 +32,14 @@ class _AddFoodItemState extends State<AddFoodItem> {
   final picker = ImagePicker();
 
   Future getImage() async{
-    final image = await picker.getImage(source: ImageSource.camera);
-
+    final image = await picker.getImage(source: ImageSource.camera,imageQuality: 35);
     // final compressedImage = await FlutterImageCompress.compressAndGetFile(image.path, image.path, quality: 30);
 
     setState(() {
       // _image = compressedImage;
       _image = File(image.path);
     });
+    print(_image.lengthSync());
   }
 
   @override
