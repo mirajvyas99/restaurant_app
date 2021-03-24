@@ -55,77 +55,79 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
           iconTheme: IconThemeData(color: Colors.black),
           centerTitle: true,
         ),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Container(
-                height: 200.0,
-                width: 400.0,
-                child: Image.network(
-                  "${widget.food.imagePath}",
-                  fit: BoxFit.cover,
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  height: 200.0,
+                  width: 400.0,
+                  child: Image.network(
+                    "${widget.food.imagePath}",
+                    fit: BoxFit.cover,
+                  ),
                 ),
-              ),
-              _mediumSpace,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Text(
-                    "${widget.food.name}",
-                    style: TextStyle(color: Colors.black, fontSize: 20.0,fontWeight: FontWeight.bold,),
-                  ),
-                  Text(
-                    "₹ ${widget.food.price}",
-                    style: TextStyle(
-                        color: Theme.of(context).primaryColor, fontSize: 16.0),
-                  ),
-                ],
-              ),
-              _mediumSpace,
-              Text(
-                "Description",
-                style: TextStyle(
-                  color: Colors.grey.shade700,
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.bold,
+                _mediumSpace,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text(
+                      "${widget.food.name}",
+                      style: TextStyle(color: Colors.black, fontSize: 20.0,fontWeight: FontWeight.bold,),
+                    ),
+                    Text(
+                      "₹ ${widget.food.price}",
+                      style: TextStyle(
+                          color: Theme.of(context).primaryColor, fontSize: 16.0),
+                    ),
+                  ],
                 ),
-              ),
-              _smallSpace,
-              Text(
-                "${widget.food.description}",
-                style: TextStyle(color: Colors.black, fontSize: 16.0),
-                textAlign: TextAlign.justify,
-              ),
-              _mediumSpace,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  IconButton(
-                    icon: Icon(Icons.remove_circle,color: Colors.red,),
-                    onPressed: _decrementCounter,
+                _mediumSpace,
+                Text(
+                  "Description",
+                  style: TextStyle(
+                    color: Colors.grey.shade700,
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
                   ),
-                  SizedBox(
-                    width: 15.0,
-                  ),
-                  Text(
-                   "$_counter" ,
-                    style: TextStyle(fontSize: 16.0),
-                  ),
-                  SizedBox(
-                    width: 15.0,
-                  ),
-                  IconButton(
-                    icon: Icon(Icons.add_circle,color: Colors.green,),
-                    onPressed: _incrementCounter,
-                  ),
-                ],
-              ),
-              _largeSpace,
-              // Button(btnText: "Add to Cart"),
-              _buildAddToCartButton(),
-            ],
+                ),
+                _smallSpace,
+                Text(
+                  "${widget.food.description}",
+                  style: TextStyle(color: Colors.black, fontSize: 16.0),
+                  textAlign: TextAlign.justify,
+                ),
+                _mediumSpace,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    IconButton(
+                      icon: Icon(Icons.remove_circle,color: Colors.red,),
+                      onPressed: _decrementCounter,
+                    ),
+                    SizedBox(
+                      width: 15.0,
+                    ),
+                    Text(
+                     "$_counter" ,
+                      style: TextStyle(fontSize: 16.0),
+                    ),
+                    SizedBox(
+                      width: 15.0,
+                    ),
+                    IconButton(
+                      icon: Icon(Icons.add_circle,color: Colors.green,),
+                      onPressed: _incrementCounter,
+                    ),
+                  ],
+                ),
+                _largeSpace,
+                // Button(btnText: "Add to Cart"),
+                _buildAddToCartButton(),
+              ],
+            ),
           ),
         ),
       ),
@@ -143,7 +145,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
           );
           widget.food.quantity = _counter;
           print(widget.food.id);
-          model.addOrder(widget.food);
+          model.addCart(widget.food);
         },
         child: Button(btnText: "Add to Cart"),
       );

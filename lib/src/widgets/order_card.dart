@@ -107,7 +107,7 @@ class _OrderCardState extends State<OrderCard> {
                     onTap: () {
                       widget.food.quantity = 0;
                       // print("button - ${widget.food.quantity}");
-                      model.addOrder(widget.food);
+                      model.addCart(widget.food);
                     },
                     child: Icon(
                       Icons.cancel,

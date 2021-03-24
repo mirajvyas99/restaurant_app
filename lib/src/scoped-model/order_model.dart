@@ -19,7 +19,7 @@ class OrderModel extends Model {
     return _orders.length;
   }
 
-  Future<bool> addOrder(Food order) async {
+  Future<bool> addCart(Food order) async {
     _isLoading = true;
     notifyListeners();
 

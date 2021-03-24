@@ -151,12 +151,12 @@ class _MainScreenState extends State<MainScreen> {
               title: Text("Home"),
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.explore),
+              icon: Icon(Icons.restaurant),
               title: Text("Explore"),
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.shopping_cart),
-              title: Text("Orders"),
+              title: Text("Cart"),
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
