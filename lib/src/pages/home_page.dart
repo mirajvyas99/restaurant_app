@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:restaurant_app/src/scoped-model/category_model.dart';
 import '../scoped-model/main_model.dart';
 import 'package:scoped_model/scoped_model.dart';
 import '../widgets/bought_foods.dart';
@@ -17,8 +18,9 @@ import '../scoped-model/food_model.dart';
 
 class HomePage extends StatefulWidget {
   // final FoodModel foodModel;
-  //
+  // final CategoryModel categoryModel;
   // HomePage(this.foodModel);
+  // HomePage(this.categoryModel);
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -29,6 +31,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     // widget.foodModel.fetchFoods();
+    // widget.categoryModel.fetchCategories();
     super.initState();
   }
 

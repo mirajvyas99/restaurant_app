@@ -17,11 +17,11 @@ class FoodCard extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Row(
             children: <Widget>[
-              Image(
-                image: AssetImage(imagePath),
-                height: 65.0,
-                width: 65.0,
-              ),
+              // Image(
+              //   image: AssetImage(imagePath),
+              //   height: 65.0,
+              //   width: 65.0,
+              // ),
               SizedBox(
                 width: 20.0,
               ),

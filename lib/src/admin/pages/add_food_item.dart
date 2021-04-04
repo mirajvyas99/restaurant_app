@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:restaurant_app/src/models/category_model.dart';
 // import 'package:flutter_image_compress/flutter_image_compress.dart';
 import '../../models/food_model.dart';
 import '../../scoped-model/main_model.dart';
@@ -11,7 +12,8 @@ import 'package:image_picker/image_picker.dart';
 
 class AddFoodItem extends StatefulWidget {
   final Food food;
-  AddFoodItem({this.food});
+  final Category cat;
+  AddFoodItem({this.food, this.cat});
 
   @override
   _AddFoodItemState createState() => _AddFoodItemState();
@@ -31,8 +33,9 @@ class _AddFoodItemState extends State<AddFoodItem> {
   File _image;
   final picker = ImagePicker();
 
-  Future getImage() async{
-    final image = await picker.getImage(source: ImageSource.gallery,imageQuality: 28);
+  Future getImage() async {
+    final image =
+        await picker.getImage(source: ImageSource.gallery, imageQuality: 28);
     // final compressedImage = await FlutterImageCompress.compressAndGetFile(image.path, image.path, quality: 30);
 
     setState(() {
@@ -45,7 +48,7 @@ class _AddFoodItemState extends State<AddFoodItem> {
   @override
   void initState() {
     super.initState();
-    if(widget.food!=null){
+    if (widget.food != null) {
       imagePath = widget.food.imagePath;
     }
   }
@@ -105,7 +108,7 @@ class _AddFoodItemState extends State<AddFoodItem> {
                             : widget.food != null
                                 ? Image.network("${widget.food.imagePath}")
                                 : Image.asset("assets/images/noimage.png"),
-                        onTap: (){
+                        onTap: () {
                           getImage();
                         },
                       ),
@@ -124,7 +127,8 @@ class _AddFoodItemState extends State<AddFoodItem> {
                     //   },
                     // ),
                     _buildTextFormField("Food Title"),
-                    _buildTextFormField("Category"),
+                    // _buildTextFormField("Category"), //text field
+                    _buildCategoryFormField("Category"),
                     _buildTextFormField("Description", maxLine: 5),
                     _buildTextFormField("Price"),
                     _buildTextFormField("Discount"),
@@ -134,9 +138,10 @@ class _AddFoodItemState extends State<AddFoodItem> {
                           MainModel model) {
                         return GestureDetector(
                           child: Button(
-                              btnText: widget.food != null
-                                  ? "Update Food Item"
-                                  : "Add Food Item"),
+                            btnText: widget.food != null
+                                ? "Update Food Item"
+                                : "Add Food Item",
+                          ),
                           onTap: () {
                             onSubmit(model.addFood, model.updateFood);
                             if (model.isLoading) {
@@ -165,9 +170,10 @@ class _AddFoodItemState extends State<AddFoodItem> {
     if (_foodItemFormKey.currentState.validate()) {
       _foodItemFormKey.currentState.save();
 
-      if(_image!=null){
+      if (_image != null) {
         FirebaseStorage fs = FirebaseStorage.instance;
-        Reference reference = fs.ref().child("foods/${_image.path.split('/').last}"); //gets the original filename from the whole path & set as filename in storage
+        Reference reference = fs.ref().child(
+            "foods/${_image.path.split('/').last}"); //gets the original filename from the whole path & set as filename in storage
         // Reference reference = fs.ref().child("foods/${widget.food.name}"); //sets the filename as the name of food
         await reference.putFile(_image);
         imagePath = (await reference.getDownloadURL()).toString();
@@ -235,13 +241,13 @@ class _AddFoodItemState extends State<AddFoodItem> {
           ? widget.food.name
           : widget.food != null && hint == "Description"
               ? widget.food.description
-              : widget.food != null && hint == "Category"
-                  ? widget.food.category
-                  : widget.food != null && hint == "Price"
-                      ? widget.food.price.toString()
-                      : widget.food != null && hint == "Discount"
-                          ? widget.food.discount.toString()
-                            : "",
+              // : widget.food != null && hint == "Category"
+              //     ? widget.food.category
+              : widget.food != null && hint == "Price"
+                  ? widget.food.price.toString()
+                  : widget.food != null && hint == "Discount"
+                      ? widget.food.discount.toString()
+                      : "",
       decoration: InputDecoration(hintText: "$hint"),
       maxLines: maxLine,
       keyboardType: hint == "Price" || hint == "Discount"
@@ -255,9 +261,9 @@ class _AddFoodItemState extends State<AddFoodItem> {
         if (value.isEmpty && hint == "Description") {
           return "Description is required";
         }
-        if (value.isEmpty && hint == "Category") {
-          return "Category is required";
-        }
+        // if (value.isEmpty && hint == "Category") {
+        //   return "Category is required";
+        // }
         if (value.isEmpty && hint == "Price") {
           return "Price is required";
         }
@@ -267,9 +273,9 @@ class _AddFoodItemState extends State<AddFoodItem> {
         if (hint == "Food Title") {
           title = value;
         }
-        if (hint == "Category") {
-          category = value;
-        }
+        // if (hint == "Category") {
+        //   category = value;
+        // }
         if (hint == "Description") {
           description = value;
         }
@@ -283,35 +289,52 @@ class _AddFoodItemState extends State<AddFoodItem> {
     );
   }
 
-  // String dropdownValue;
-  //
-  // Widget _buildCategoryFormField(String hint) {
-  //   return DropdownButtonFormField<String>(
-  //     value: dropdownValue,
-  //     icon: const Icon(Icons.arrow_drop_down_sharp),
-  //     iconSize: 24,
-  //     elevation: 15,
-  //     style: const TextStyle(color: Colors.black),
-  //     onChanged: (value) async {
-  //       setState(() {
-  //         dropdownValue = value;
-  //       });
-  //     },
-  //     hint: Text("$hint"),
-  //     items: <String>['Soups', 'Starters', 'Indian Bread', 'Pizza', 'Burger', 'Coffee Cup', 'Soft Drinks', 'Deserts']
-  //         .map<DropdownMenuItem<String>>((String value) {
-  //       return DropdownMenuItem<String>(
-  //         value: value,
-  //         child: Text(value),
-  //       );
-  //     }).toList(),
-  //     validator: (String value) {
-  //       // String error
-  //       if (value.isEmpty && hint == "Category") {
-  //         return "Category is required";
-  //       }
-  //       // return "";
-  //     },
-  //   );
-  // }
+  String dropdownValue;
+
+  Widget _buildCategoryFormField(String hint) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20.0),
+      child: DropdownButtonFormField<String>(
+        //     widget.food != null && hint == "Category"
+        // ? widget.food.category :
+        value: dropdownValue,
+        icon: const Icon(Icons.arrow_drop_down),
+        iconSize: 24,
+        dropdownColor: Colors.grey.shade200,
+        elevation: 20,
+        style: const TextStyle(color: Colors.black),
+        onChanged: (value) async {
+          setState(() {
+            dropdownValue = value;
+          });
+        },
+        onSaved: (String value) {
+          category = value;
+        },
+        hint: Text("$hint"),
+        items: <String>[
+          'Soups',
+          'Starters',
+          'Indian Bread',
+          'Pizza',
+          'Burger',
+          'Coffee Cup',
+          'Soft Drinks',
+          'Deserts'
+        ].map<DropdownMenuItem<String>>((String value) {
+          return DropdownMenuItem<String>(
+            value: value,
+            child: Text(value),
+          );
+        }).toList(),
+        validator: (String value) {
+          // String error
+          if (value.isEmpty && hint == "Category") {
+            return "Category is required";
+          }
+          // return "";
+        },
+      ),
+    );
+  }
 }

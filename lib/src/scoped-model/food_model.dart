@@ -31,7 +31,7 @@ class FoodModel extends Model {
         "title": food.name,
         "imagePath": food.imagePath,
         "description": food.description,
-        "category": food.category,
+        "catId": food.catId,
         "price": food.price,
         "discount": food.discount,
       };
@@ -46,7 +46,7 @@ class FoodModel extends Model {
         name: food.name,
         imagePath: food.imagePath,
         description: food.description,
-        category: food.category,
+        catId: food.catId,
         discount: food.discount,
         price: food.price,
       );
@@ -82,7 +82,7 @@ class FoodModel extends Model {
           name: foodData["title"],
           imagePath: foodData["imagePath"],
           description: foodData["description"],
-          category: foodData["category"],
+          catId: foodData["catId"],
           price: double.parse(foodData["price"].toString()),
           discount: double.parse(foodData["discount"].toString()),
         );
@@ -118,7 +118,7 @@ class FoodModel extends Model {
         id: foodId,
         name: foodData["title"],
         imagePath: foodData['imagePath'],
-        category: foodData['category'],
+        catId: foodData['catId'],
         discount: foodData['discount'],
         price: foodData['price'],
         description: foodData['description'],

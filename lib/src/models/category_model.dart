@@ -1,7 +1,7 @@
 class Category {
-  final String id;
+  final String catId;
   final String categoryName;
   final String imagePath;
 
-  Category({this.id, this.categoryName, this.imagePath});
+  Category({this.catId, this.categoryName, this.imagePath});
 }

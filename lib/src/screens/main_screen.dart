@@ -77,65 +77,66 @@ class _MainScreenState extends State<MainScreen> {
           ],
         ),
         drawer: ScopedModelDescendant(
-          builder: (BuildContext context, Widget child, MainModel model){
-            UserInfo userInfo = model.getUserDetails(PreferenceHelper.getId());
-            return Drawer(
-              child: Column(
-                children: <Widget>[
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Column(
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(30.0),
-                        child: Image.asset('assets/images/restaurant.jpeg'),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        "RESTAURANT",
-                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  userInfo.email == "admin@gmail.com" ?  ListTile(
-                    onTap: () {
-                      Navigator.of(context).pop();
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (BuildContext context) => AddFoodItem(),
-                      ));
-                    },
-                    leading: Icon(Icons.fastfood),
-                    title: Text(
-                      "Add Food Item",
-                      style: TextStyle(fontSize: 16.0),
+            builder: (BuildContext context, Widget child, MainModel model) {
+          UserInfo userInfo = model.getUserDetails(PreferenceHelper.getId());
+          return Drawer(
+            child: Column(
+              children: <Widget>[
+                SizedBox(
+                  height: 20,
+                ),
+                Column(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(30.0),
+                      child: Image.asset('assets/images/restaurant.jpeg'),
                     ),
-                  ) :
-                  ListTile(
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (BuildContext context) => AboutUsPage(),
-                      ));
-                    },
-                    leading: Icon(Icons.info),
-                    title: Text(
-                      "About Us",
-                      style: TextStyle(fontSize: 16.0),
+                    SizedBox(
+                      height: 10,
                     ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                ],
-              ),
-            );
-          }
-        ),
+                    Text(
+                      "RESTAURANT",
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                userInfo.email == "admin@gmail.com"
+                    ? ListTile(
+                        onTap: () {
+                          Navigator.of(context).pop();
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (BuildContext context) => AddFoodItem(),
+                          ));
+                        },
+                        leading: Icon(Icons.fastfood),
+                        title: Text(
+                          "Add Food Item",
+                          style: TextStyle(fontSize: 16.0),
+                        ),
+                      )
+                    : ListTile(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (BuildContext context) => AboutUsPage(),
+                          ));
+                        },
+                        leading: Icon(Icons.info),
+                        title: Text(
+                          "About Us",
+                          style: TextStyle(fontSize: 16.0),
+                        ),
+                      ),
+                SizedBox(
+                  height: 20,
+                ),
+              ],
+            ),
+          );
+        }),
         bottomNavigationBar: BottomNavigationBar(
           onTap: (int index) {
             setState(() {
