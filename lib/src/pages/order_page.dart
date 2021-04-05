@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_app/src/models/food_model.dart';
 import 'package:restaurant_app/src/scoped-model/main_model.dart';
-import 'package:restaurant_app/src/widgets/show_dialog.dart';
 import 'package:scoped_model/scoped_model.dart';
 import '../widgets/order_card.dart';
-import 'checkout_page.dart';
+
 
 class OrderPage extends StatefulWidget {
   final MainModel model;

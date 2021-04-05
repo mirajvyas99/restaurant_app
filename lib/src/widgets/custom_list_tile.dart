@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_app/src/pages/payment_page.dart';
-import 'package:restaurant_app/src/pages/signin_page.dart';
 import 'package:restaurant_app/src/scoped-model/main_model.dart';
 import 'package:restaurant_app/src/utils/preference_helper.dart';
 import 'package:scoped_model/scoped_model.dart';

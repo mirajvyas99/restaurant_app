@@ -1,8 +1,5 @@
 import 'dart:convert';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:restaurant_app/src/models/category_model.dart';
-import 'package:restaurant_app/src/models/food_model.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:http/http.dart' as http;
 

@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:restaurant_app/src/models/category_model.dart';
-import 'package:restaurant_app/src/scoped-model/category_model.dart';
 // import 'package:flutter_image_compress/flutter_image_compress.dart';
 import '../../models/food_model.dart';
 import '../../scoped-model/main_model.dart';

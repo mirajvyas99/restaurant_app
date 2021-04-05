@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:restaurant_app/src/app.dart';
 
 class AboutUsPage extends StatefulWidget {
   @override

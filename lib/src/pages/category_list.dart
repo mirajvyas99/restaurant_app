@@ -1,15 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:restaurant_app/src/admin/pages/add_food_item.dart';
 import 'package:restaurant_app/src/models/category_model.dart';
-import 'package:restaurant_app/src/models/user_info_model.dart';
-import 'package:restaurant_app/src/utils/preference_helper.dart';
 import '../models/food_model.dart';
-import '../scoped-model/food_model.dart';
 import '../scoped-model/main_model.dart';
 import 'package:scoped_model/scoped_model.dart';
 import '../widgets/food_item_card.dart';
-import '../widgets/show_dialog.dart';
 import 'food_details_page.dart';
 
 class CategoryListPage extends StatefulWidget {

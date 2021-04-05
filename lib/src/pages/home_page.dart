@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:restaurant_app/src/scoped-model/category_model.dart';
 import '../scoped-model/main_model.dart';
 import 'package:scoped_model/scoped_model.dart';
 import '../widgets/bought_foods.dart';
@@ -11,7 +10,6 @@ import 'food_details_page.dart';
 
 //Model
 import '../models/food_model.dart';
-import '../scoped-model/food_model.dart';
 
 class HomePage extends StatefulWidget {
   // final FoodModel foodModel;

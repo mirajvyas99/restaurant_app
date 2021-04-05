@@ -1,5 +1,4 @@
 import 'package:restaurant_app/src/enums/auth_mode.dart';
-import 'package:restaurant_app/src/screens/main_screen.dart';
 import 'package:restaurant_app/src/utils/preference_helper.dart';
 import 'package:scoped_model/scoped_model.dart';
 import '../scoped-model/main_model.dart';
