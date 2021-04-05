@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_app/src/models/food_model.dart';
+import 'package:restaurant_app/src/pages/checkout_page.dart';
 import 'package:restaurant_app/src/scoped-model/main_model.dart';
 import 'package:scoped_model/scoped_model.dart';
 import '../widgets/order_card.dart';
@@ -160,21 +161,21 @@ class _OrderPageState extends State<OrderPage> {
                 height: 20.0,
               ),
               GestureDetector(
-                // onTap: () {
-                //   onSubmit(model.addOrder, model.updateOrder);
-                //   if (model.isLoading) {
-                //     //show loading progress indicator
-                //     showLoadingIndicator(
-                //         context,
-                //         widget.food != null
-                //             ? "Updating Order..."
-                //             : "Adding Order...");
-                //   }
-                //   Navigator.of(context).push(
-                //     MaterialPageRoute(
-                //         builder: (BuildContext context) => CheckoutPage()),
-                //   );
-                // },
+                onTap: () {
+                  // onSubmit(model.addOrder, model.updateOrder);
+                  // if (model.isLoading) {
+                  //   //show loading progress indicator
+                  //   showLoadingIndicator(
+                  //       context,
+                  //       widget.food != null
+                  //           ? "Updating Order..."
+                  //           : "Adding Order...");
+                  // }
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                        builder: (BuildContext context) => CheckoutPage()),
+                  );
+                },
                 child: Container(
                   height: 44.0,
                   decoration: BoxDecoration(
