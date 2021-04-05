@@ -40,7 +40,7 @@ class _FoodCategoryState extends State<FoodCategory> {
             return GestureDetector(
               child: FoodCard(
                 categoryName: model.categories[index].categoryName,
-                // imagePath: _categories[index].imagePath,
+                imagePath: model.categories[index].imagePath,
               ),
               onTap: () {},
             );

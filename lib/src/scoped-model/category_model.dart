@@ -67,6 +67,13 @@ class CategoryModel extends Model {
     notifyListeners();
 
     try {
+
+      // FirebaseStorage reference = FirebaseStorage.instance;
+      // final imgref = reference.ref().child('coffee-cup.png');
+      // // no need of the file extension, the name will do fine.
+      // var url = await imgref.getDownloadURL();
+      // print(url);
+
       final http.Response response = await http.get(
           "https://restaurant-app-8548a-default-rtdb.firebaseio.com/categories.json");
 
@@ -78,7 +85,7 @@ class CategoryModel extends Model {
         Category catItem = Category(
           catId: catData["catId"],
           categoryName: catData["categoryName"],
-          // imagePath: catData["imagePath"],
+          imagePath: catData["imagePath"],
         );
         catItems.add(catItem);
       });
