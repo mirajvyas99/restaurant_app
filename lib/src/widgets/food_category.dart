@@ -26,8 +26,8 @@ class _FoodCategoryState extends State<FoodCategory> {
     return Container(
       height: 80.0,
       child: ScopedModelDescendant<MainModel>(
-          builder: (BuildContext context, Widget child, MainModel model) {
-        return ListView.builder(
+        builder: (BuildContext context, Widget child, MainModel model) {
+          return ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: model.categoryLength,
           itemBuilder: (BuildContext context, int index) {
@@ -44,7 +44,8 @@ class _FoodCategoryState extends State<FoodCategory> {
             );
           },
         );
-      }),
+        },
+      ),
     );
   }
 }
