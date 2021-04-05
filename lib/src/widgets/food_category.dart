@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:restaurant_app/src/pages/category_list.dart';
 import 'package:restaurant_app/src/scoped-model/main_model.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'food_card.dart';
-
-//Data
-import '../data/category_data.dart';
-
-//Model
-import '../models/category_model.dart';
 
 class FoodCategory extends StatefulWidget {
   final MainModel model;
@@ -41,7 +36,11 @@ class _FoodCategoryState extends State<FoodCategory> {
                 categoryName: model.categories[index].categoryName,
                 imagePath: model.categories[index].imagePath,
               ),
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) => CategoryListPage(catId: model.categories[index]),
+                ));
+              },
             );
           },
         );

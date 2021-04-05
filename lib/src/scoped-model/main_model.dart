@@ -5,8 +5,7 @@ import 'package:scoped_model/scoped_model.dart';
 import 'user_scoped_model.dart';
 import 'order_model.dart';
 
-class MainModel extends Model
-    with FoodModel, UserModel, OrderModel, CategoryModel {
+class MainModel extends Model with FoodModel, UserModel, OrderModel, CategoryModel {
   void fetchAll() {
     fetchFoods();
     fetchUserInfos();

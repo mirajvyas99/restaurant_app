@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:restaurant_app/src/models/category_model.dart';
+import 'package:restaurant_app/src/scoped-model/category_model.dart';
 // import 'package:flutter_image_compress/flutter_image_compress.dart';
 import '../../models/food_model.dart';
 import '../../scoped-model/main_model.dart';
@@ -22,6 +23,7 @@ class AddFoodItem extends StatefulWidget {
 class _AddFoodItemState extends State<AddFoodItem> {
   String title;
   String category;
+  String catId;
   String imagePath;
   String description;
   String price;
@@ -32,6 +34,8 @@ class _AddFoodItemState extends State<AddFoodItem> {
 
   File _image;
   final picker = ImagePicker();
+
+  Category dropdownValue;
 
   Future getImage() async {
     final image =
@@ -184,7 +188,7 @@ class _AddFoodItemState extends State<AddFoodItem> {
         //i want to update the food item
         Map<String, dynamic> updatedFoodItem = {
           "title": title,
-          "category": category,
+          "catId": catId,
           "imagePath": imagePath,
           "description": description,
           "price": double.parse(price),
@@ -211,7 +215,7 @@ class _AddFoodItemState extends State<AddFoodItem> {
         //i want to add new food item
         final Food food = Food(
           name: title,
-          category: category,
+          catId: catId,
           imagePath: imagePath,
           description: description,
           price: double.parse(price),
@@ -289,52 +293,52 @@ class _AddFoodItemState extends State<AddFoodItem> {
     );
   }
 
-  String dropdownValue;
-
   Widget _buildCategoryFormField(String hint) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20.0),
-      child: DropdownButtonFormField<String>(
-        //     widget.food != null && hint == "Category"
-        // ? widget.food.category :
-        value: dropdownValue,
-        icon: const Icon(Icons.arrow_drop_down),
-        iconSize: 24,
-        dropdownColor: Colors.grey.shade200,
-        elevation: 20,
-        style: const TextStyle(color: Colors.black),
-        onChanged: (value) async {
-          setState(() {
-            dropdownValue = value;
-          });
-        },
-        onSaved: (String value) {
-          category = value;
-        },
-        hint: Text("$hint"),
-        items: <String>[
-          'Soups',
-          'Starters',
-          'Indian Bread',
-          'Pizza',
-          'Burger',
-          'Coffee Cup',
-          'Soft Drinks',
-          'Deserts'
-        ].map<DropdownMenuItem<String>>((String value) {
-          return DropdownMenuItem<String>(
-            value: value,
-            child: Text(value),
-          );
-        }).toList(),
-        validator: (String value) {
-          // String error
-          if (value.isEmpty && hint == "Category") {
-            return "Category is required";
+    return ScopedModelDescendant(
+        builder: (BuildContext context, Widget child, MainModel model){
+          if(widget.food != null){
+            for(int j=0;j<model.categoryLength;j++){
+              if(model.categories[j].catId == widget.food.catId){
+                dropdownValue = model.categories[j];
+              }
+            }
           }
-          // return "";
-        },
-      ),
+          return  Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
+            child: DropdownButtonFormField<Category>(
+              //     widget.food != null && hint == "Category"
+              // ? widget.food.category :
+              value: dropdownValue,
+              icon: const Icon(Icons.arrow_drop_down),
+              iconSize: 24,
+              dropdownColor: Colors.grey.shade200,
+              elevation: 20,
+              style: const TextStyle(color: Colors.black),
+              onChanged: (value) async {
+                setState(() {
+                  dropdownValue = value;
+                });
+              },
+              onSaved: (Category value) {
+                catId = value.catId;
+              },
+              hint: Text("$hint"),
+              items: model.categories.map<DropdownMenuItem<Category>>((Category value) {
+                return DropdownMenuItem<Category>(
+                  value: value,
+                  child: Text(value.categoryName),
+                );
+              }).toList(),
+              validator: (Category value) {
+                // String error
+                if (value.categoryName.isEmpty && hint == "Category") {
+                  return "Category is required";
+                }
+                // return "";
+              },
+            ),
+          );
+        }
     );
   }
 }

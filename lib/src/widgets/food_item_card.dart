@@ -22,8 +22,8 @@ class FoodItemCard extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             blurRadius: 5.0,
-            offset: Offset(0, 3.0),
-            color: Colors.black12, //black38
+            offset: Offset(0, 5.0),
+            color: Colors.black26, //black38
           ),
         ],
       ),

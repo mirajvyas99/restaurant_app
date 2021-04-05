@@ -22,6 +22,7 @@ class FoodModel extends Model {
     return _foods.length;
   }
 
+
   Future<bool> addFood(Food food) async {
     _isLoading = true;
     notifyListeners();
@@ -29,9 +30,9 @@ class FoodModel extends Model {
     try {
       final Map<String, dynamic> foodData = {
         "title": food.name,
+        "catId": food.catId,
         "imagePath": food.imagePath,
         "description": food.description,
-        "catId": food.catId,
         "price": food.price,
         "discount": food.discount,
       };
@@ -44,9 +45,9 @@ class FoodModel extends Model {
       Food foodWithId = Food(
         id: responseData["name"],
         name: food.name,
+        catId: food.catId,
         imagePath: food.imagePath,
         description: food.description,
-        catId: food.catId,
         discount: food.discount,
         price: food.price,
       );
@@ -80,9 +81,9 @@ class FoodModel extends Model {
         Food foodItem = Food(
           id: id,
           name: foodData["title"],
+          catId: foodData["catId"],
           imagePath: foodData["imagePath"],
           description: foodData["description"],
-          catId: foodData["catId"],
           price: double.parse(foodData["price"].toString()),
           discount: double.parse(foodData["discount"].toString()),
         );
@@ -117,8 +118,8 @@ class FoodModel extends Model {
       Food updateFoodItem = Food(
         id: foodId,
         name: foodData["title"],
-        imagePath: foodData['imagePath'],
         catId: foodData['catId'],
+        imagePath: foodData['imagePath'],
         discount: foodData['discount'],
         price: foodData['price'],
         description: foodData['description'],

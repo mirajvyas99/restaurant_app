@@ -57,16 +57,20 @@ class _OrderPageState extends State<OrderPage> {
                   Text(
                     "Subtotal",
                     style: TextStyle(
-                        color: Color(0xFF9BA7C6),
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold),
+                      color: Color(0xFF9BA7C6),
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   Text(
-                    "23.0",
+                  model.orderLength == 0
+                    ?"0.0"
+                    : "23.0",
                     style: TextStyle(
-                        color: Color(0xFF6C6D6D),
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold),
+                      color: Color(0xFF6C6D6D),
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ],
               ),
@@ -80,16 +84,18 @@ class _OrderPageState extends State<OrderPage> {
                   Text(
                     "Discount",
                     style: TextStyle(
-                        color: Color(0xFF9BA7C6),
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold),
+                      color: Color(0xFF9BA7C6),
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   Text(
                     "10.0",
                     style: TextStyle(
-                        color: Color(0xFF6C6D6D),
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold),
+                      color: Color(0xFF6C6D6D),
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ],
               ),
@@ -105,14 +111,16 @@ class _OrderPageState extends State<OrderPage> {
                     style: TextStyle(
                         color: Color(0xFF9BA7C6),
                         fontSize: 16.0,
-                        fontWeight: FontWeight.bold),
+                        fontWeight: FontWeight.bold,
+                    ),
                   ),
                   Text(
                     "0.5",
                     style: TextStyle(
                         color: Color(0xFF6C6D6D),
                         fontSize: 16.0,
-                        fontWeight: FontWeight.bold),
+                        fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ],
               ),
@@ -134,14 +142,18 @@ class _OrderPageState extends State<OrderPage> {
                     style: TextStyle(
                         color: Color(0xFF9BA7C6),
                         fontSize: 16.0,
-                        fontWeight: FontWeight.bold),
+                        fontWeight: FontWeight.bold,
+                    ),
                   ),
                   Text(
-                    "26.5",
+                    model.orderLength == 0
+                      ? "0.0"
+                      : "26.5",
                     style: TextStyle(
                         color: Color(0xFF6C6D6D),
                         fontSize: 16.0,
-                        fontWeight: FontWeight.bold),
+                        fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ],
               ),
