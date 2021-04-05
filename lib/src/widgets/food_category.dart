@@ -17,7 +17,6 @@ class FoodCategory extends StatefulWidget {
 }
 
 class _FoodCategoryState extends State<FoodCategory> {
-  final List<Category> _categories = categories;
 
   @override
   void initState() {

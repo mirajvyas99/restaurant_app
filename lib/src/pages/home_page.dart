@@ -9,9 +9,6 @@ import '../widgets/home_top_info.dart';
 import '../widgets/search_field.dart';
 import 'food_details_page.dart';
 
-//Data
-import '../data/food_data.dart';
-
 //Model
 import '../models/food_model.dart';
 import '../scoped-model/food_model.dart';
@@ -26,7 +23,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<Food> _foods = foods;
 
   @override
   void initState() {
