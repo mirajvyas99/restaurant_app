@@ -16,10 +16,11 @@ class _CheckoutPageState extends State<CheckoutPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               IconButton(
-                  icon: Icon(Icons.fastfood),
-                  iconSize: 80,
-                  color: Colors.blue,
-                  onPressed: () {}),
+                icon: Icon(Icons.fastfood),
+                iconSize: 80,
+                color: Colors.blue,
+                onPressed: () {},
+              ),
               SizedBox(
                 height: 10,
               ),

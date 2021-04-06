@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../scoped-model/main_model.dart';
 import 'package:scoped_model/scoped_model.dart';
 import '../widgets/bought_foods.dart';
@@ -29,6 +30,16 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
+  // launchURL() async {
+  //   const String url = 'https://www.9spl.com/';
+  //   await launch(url);
+  //   // if (await canLaunch(url)) {
+  //   //   await launch(url);
+  //   // } else {
+  //   //   throw 'Could not launch $url';
+  //   // }
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,10 +52,20 @@ class _HomePageState extends State<HomePage> {
           SizedBox(
             height: 20.0,
           ),
-          SearchField(),
-          SizedBox(
-            height: 20.0,
+          GestureDetector(
+            child: SizedBox(
+              height: 80.0,
+              child: Image.asset('assets/images/ad.jpg',fit: BoxFit.cover,),
+            ),
+            onTap: () async{
+              String url = 'https://www.9spl.com/';
+              await launch(url);
+            },
           ),
+          // SearchField(),
+          // SizedBox(
+          //   height: 20.0,
+          // ),
           SizedBox(
             height: 20.0,
           ),

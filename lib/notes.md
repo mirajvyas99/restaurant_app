@@ -24,6 +24,7 @@
     - assets/images/ic_launcher.png
     - assets/images/tablelogo.jpg
     - assets/images/adminlogo.png
+    - assets/images/ad.jpg
 
 
   cupertino_icons: ^0.1.2

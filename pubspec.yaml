@@ -25,6 +25,7 @@ dependencies:
   image_picker: "0.6.7+22"
   carousel_slider: "3.0.0"
   flutter_image_compress: "0.7.0"
+  url_launcher: "5.7.10"
 
 dev_dependencies:
   flutter_test:

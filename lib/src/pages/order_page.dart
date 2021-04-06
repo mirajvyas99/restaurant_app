@@ -26,7 +26,18 @@ class _OrderPageState extends State<OrderPage> {
           builder: (BuildContext context, Widget child, MainModel model) {
             if (model.orderLength == 0) {
               return Center(
-                child: Text("Cart is Empty"),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    IconButton(
+                      icon: Icon(Icons.no_food_rounded),
+                      iconSize: 50,
+                      color: Colors.blue,
+                      onPressed: () {},
+                    ),
+                    Text("Cart is Empty",style: TextStyle(fontSize: 16.0),),
+                  ],
+                ),
               );
             } else {
               return ListView.builder(
@@ -134,7 +145,7 @@ class _OrderPageState extends State<OrderPage> {
               height: 2.0,
             ),
             SizedBox(
-              height: 20.0,
+              height: 10.0,
             ),
             Row(
               mainAxisSize: MainAxisSize.max,
@@ -144,15 +155,15 @@ class _OrderPageState extends State<OrderPage> {
                   "Cart Total",
                   style: TextStyle(
                     color: Color(0xFF9BA7C6),
-                    fontSize: 16.0,
+                    fontSize: 20.0,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 Text(
                   model.orderLength == 0 ? "0.0" : "${model.finalbill}",
                   style: TextStyle(
-                    color: Color(0xFF6C6D6D),
-                    fontSize: 16.0,
+                    color: Colors.black, //Color(0xFF6C6D6D)
+                    fontSize: 20.0,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
