@@ -14,6 +14,7 @@ class _OrderCardState extends State<OrderCard> {
   @override
   Widget build(BuildContext context) {
     return ScopedModelDescendant(
+      // rebuildOnChange: false,
       builder: (BuildContext context, Widget child, MainModel model){
         return Card(
             elevation: 5.0,
@@ -78,9 +79,13 @@ class _OrderCardState extends State<OrderCard> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text(
-                        "${widget.food.name}",
-                        style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+                      SizedBox(
+                        width: 165.0,
+                        child: Text(
+                          "${widget.food.name}",
+                          style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+                          overflow: TextOverflow.fade,
+                        ),
                       ),
                       SizedBox(height: 5.0),
                       Text(

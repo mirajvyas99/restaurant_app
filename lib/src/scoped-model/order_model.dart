@@ -5,6 +5,29 @@ import 'package:scoped_model/scoped_model.dart';
 class OrderModel extends Model {
   List<Food> _orders = [];
 
+  double sum;
+  double finalsum;
+  double finaltotal;
+
+  double get subtotal{
+    double sum1 = 0;
+    print("LENGTH : ${_orders.length}");
+    for(int k=0;k < _orders.length;k++){
+      sum1 += _orders[k].quantity * _orders[k].price;
+
+      print(k);
+      print(sum1);
+    }
+    sum = sum1;
+    return sum1;
+  }
+
+  double get finalbill{
+    finalsum = sum + (sum * 0.05);
+    finaltotal = finalsum - (finalsum*0.1);
+    return finaltotal;
+  }
+
   bool _isLoading = false;
 
   bool get isLoading {

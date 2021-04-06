@@ -1,0 +1,41 @@
+  assets:
+    - assets/images/beer.png
+    - assets/images/breakfast.jpeg
+    - assets/images/burger.png
+    - assets/images/cheeseburger.png
+    - assets/images/coffee-cup.png
+    - assets/images/cupcake.png
+    - assets/images/lunch.jpeg
+    - assets/images/pizza.png
+    - assets/images/supper_1.jpeg
+    - assets/images/turkey.png
+    - assets/images/noimage.png
+    - assets/images/desert.png
+    - assets/images/indianbread.png
+    - assets/images/softdrink.png
+    - assets/images/soup.png
+    - assets/images/starter.png
+    - assets/images/starter2.jpg
+    - assets/images/volcano.jpg
+    - assets/images/paneerbuttermasala.jpg
+    - assets/images/qrcode.png
+    - assets/images/userlogo.jpeg
+    - assets/images/restaurant.jpeg
+    - assets/images/ic_launcher.png
+    - assets/images/tablelogo.jpg
+    - assets/images/adminlogo.png
+
+
+  cupertino_icons: ^0.1.2
+  http: ^0.12.0+2
+  scoped_model: ^1.0.1
+  rxdart: ^0.24.1
+  shared_preferences: ^0.5.12+4
+  firebase_core: ^0.7.0
+  firebase_auth: ^0.20.1
+  firebase_storage: ^7.0.0
+  provider: ^4.3.3
+  get_it: ^5.0.6
+  image_picker: ^0.6.7+22
+  carousel_slider: ^3.0.0
+  flutter_image_compress: ^0.7.0
