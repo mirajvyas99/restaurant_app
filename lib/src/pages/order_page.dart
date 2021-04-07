@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:restaurant_app/src/models/checkout_order_model.dart';
 import 'package:restaurant_app/src/models/food_model.dart';
+import 'package:restaurant_app/src/models/user_info_model.dart';
 import 'package:restaurant_app/src/pages/checkout_page.dart';
+import 'package:restaurant_app/src/scoped-model/checkout_order_model.dart';
 import 'package:restaurant_app/src/scoped-model/main_model.dart';
 import 'package:restaurant_app/src/scoped-model/order_model.dart';
+import 'package:restaurant_app/src/utils/preference_helper.dart';
+import 'package:restaurant_app/src/widgets/show_dialog.dart';
 import 'package:scoped_model/scoped_model.dart';
 import '../widgets/order_card.dart';
 
@@ -174,15 +179,8 @@ class _OrderPageState extends State<OrderPage> {
             ),
             GestureDetector(
               onTap: () {
-                // onSubmit(model.addOrder, model.updateOrder);
-                // if (model.isLoading) {
-                //   //show loading progress indicator
-                //   showLoadingIndicator(
-                //       context,
-                //       widget.food != null
-                //           ? "Updating Order..."
-                //           : "Adding Order...");
-                // }
+                UserInfo userInfo = model.getUserDetails(PreferenceHelper.getId());
+                model.addOrder(CheckoutOrder(id: userInfo.username,finalorders: model.orders,));
                 Navigator.of(context).push(
                   MaterialPageRoute(
                       builder: (BuildContext context) => CheckoutPage()),
@@ -214,63 +212,4 @@ class _OrderPageState extends State<OrderPage> {
       );
     });
   }
-
-// void onSubmit(Function addOrder, Function updateOrder) async {
-//   if (_foodItemFormKey.currentState.validate()) {
-//     _foodItemFormKey.currentState.save();
-//
-//     if (widget.food != null) {
-//       //i want to update the food item
-//       Map<String, dynamic> updatedOrderItem = {
-//         "title": title,
-//         "quantity": quantity;
-//       };
-//       final bool response = await updateOrder(updatedOrderItem, widget.food.id);
-//       print(response);
-//       if (response) {
-//         Navigator.of(context).pop(); // to remove the alert dialog
-//         Navigator.of(context).push(
-//           MaterialPageRoute(
-//             builder: (BuildContext context) => CheckoutPage()
-//           ),
-//         ); //to the wallpaper page
-//       } else if (!response) {
-//         Navigator.of(context).pop();
-//         SnackBar snackBar = SnackBar(
-//           duration: Duration(seconds: 2),
-//           backgroundColor: Colors.red,
-//           content: Text(
-//             "Failed to update order item.",
-//             style: TextStyle(color: Colors.white, fontSize: 16.0),
-//           ),
-//         );
-//         _scaffoldStateKey.currentState.showSnackBar(snackBar);
-//       }
-//     } else if (widget.food == null) {
-//       //i want to add new food item
-//       final Food food = CheckoutOrder(
-//         name: title,
-//         quantity: quantity:
-//       );
-//       bool value = await addOrder(order);
-//       if (value) {
-//         Navigator.of(context).push(
-//           MaterialPageRoute(
-//             builder: (BuildContext context) => CheckoutPage()
-//           ),
-//         );
-//         SnackBar snackBar = SnackBar(
-//           content: Text("Food item successfully added."),
-//         );
-//         _scaffoldStateKey.currentState.showSnackBar(snackBar);
-//       } else if (!value) {
-//         Navigator.of(context).pop();
-//         SnackBar snackBar = SnackBar(
-//           content: Text("Failed to add food item."),
-//         );
-//         _scaffoldStateKey.currentState.showSnackBar(snackBar);
-//       }
-//     }
-//   }
-// }
 }

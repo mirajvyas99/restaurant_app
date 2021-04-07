@@ -1,14 +1,12 @@
+import 'package:restaurant_app/src/models/food_model.dart';
+
 class CheckoutOrder{
 
   final String id;
-  final String name;
-  final String username;
-  int quantity;
+  final List<Food> finalorders;
 
-  CheckoutOrder(
+  CheckoutOrder({
     this.id,
-    this.name,
-    this.quantity,
-    this.username,
-  );
+    this.finalorders,
+  });
 }

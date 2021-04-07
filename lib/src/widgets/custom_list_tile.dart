@@ -34,6 +34,7 @@ class CustomListTile extends StatelessWidget {
             ),
             onTap: (){
               if("$text" == "Logout"){
+                model.logoutCart();
                 PreferenceHelper.load().whenComplete(() => PreferenceHelper.clear());
                 Navigator.of(context).pushReplacementNamed("/");
                 model.logout();

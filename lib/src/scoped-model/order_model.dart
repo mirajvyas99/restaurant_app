@@ -82,4 +82,21 @@ class OrderModel extends Model {
       // print("Connection Error : $e");
     }
   }
+
+  Future<bool> logoutCart() async {
+    _isLoading = true;
+    notifyListeners();
+
+    _orders.clear();
+
+    try {
+      _isLoading = false;
+      notifyListeners();
+      return Future.value(true);
+    } catch (e) {
+      _isLoading = false;
+      notifyListeners();
+      return Future.value(false);
+    }
+  }
 }
